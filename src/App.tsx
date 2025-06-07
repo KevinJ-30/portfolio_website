@@ -1,12 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import About from './pages/About'
+import Resume from './pages/Resume'
+import Projects from './pages/Projects'
+import Timeline from './pages/Timeline'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center">
-      <h1 className="text-white text-4xl font-bold">Tailwind is working!</h1>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/timeline" element={<Timeline />} />
+      </Routes>
+    </Router>
   )
 }
