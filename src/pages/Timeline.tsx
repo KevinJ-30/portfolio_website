@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import Timeline from '../components/timeline'
+import Timeline from "../components/Experiences"
 export default function Home() {
   return (
     <motion.div
