@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 interface Experience {
   id: number
@@ -27,37 +27,98 @@ const experiences: Experience[] = [
     description: "Assisted in research projects related to machine learning and data analysis. Implemented algorithms and analyzed results.",
     skills: ["Python", "Machine Learning", "Data Analysis"]
   },
-  // Add more experiences as needed
+  {
+    id: 3,
+    title: "Teaching Assistant",
+    company: "University Department",
+    date: "2023-Present",
+    description: "Leading discussion sections and helping students understand complex programming concepts. Grading assignments and providing constructive feedback.",
+    skills: ["Teaching", "Python", "Java", "Communication"]
+  },
+  {
+    id: 4,
+    title: "Web Development Intern",
+    company: "Tech Startup",
+    date: "Spring 2023",
+    description: "Developed and maintained client websites using modern web technologies. Implemented responsive designs and optimized performance.",
+    skills: ["HTML", "CSS", "JavaScript", "WordPress"]
+  },
+  {
+    id: 5,
+    title: "Data Science Project",
+    company: "University Research Lab",
+    date: "2022",
+    description: "Conducted data analysis and visualization for research projects. Developed predictive models using machine learning algorithms.",
+    skills: ["Python", "Pandas", "Scikit-learn", "Data Visualization"]
+  },
+  {
+    id: 6,
+    title: "Mobile App Development",
+    company: "Personal Project",
+    date: "2023",
+    description: "Created a cross-platform mobile application using React Native. Implemented user authentication and real-time data synchronization.",
+    skills: ["React Native", "Firebase", "Redux", "Mobile Development"]
+  },
+  {
+    id: 7,
+    title: "Hackathon Winner",
+    company: "University Hackathon",
+    date: "2022",
+    description: "Led a team to develop an innovative solution for sustainable living. Won first place in the university hackathon.",
+    skills: ["Team Leadership", "Rapid Prototyping", "Presentation", "Problem Solving"]
+  },
+  {
+    id: 8,
+    title: "Open Source Contributor",
+    company: "GitHub",
+    date: "2022-Present",
+    description: "Contributed to various open-source projects. Fixed bugs and implemented new features for popular repositories.",
+    skills: ["Git", "Open Source", "Code Review", "Documentation"]
+  }
 ]
 
 export default function Timeline() {
   const [selectedId, setSelectedId] = useState<number | null>(null)
+  const timelineRef = useRef<HTMLDivElement>(null)
+
+  // Handle click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (timelineRef.current && !timelineRef.current.contains(event.target as Node)) {
+        setSelectedId(null)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   return (
     <motion.div
-      className="w-full max-w-4xl mx-auto px-4 py-12"
+      className="w-full overflow-x-auto pb-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
+      ref={timelineRef}
     >
-      <h1 className="text-4xl font-bold text-gray-900 mb-12 text-center">Experience Timeline</h1>
-      
-      <div className="relative">
-        {/* Vertical Line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-300" />
+      <div className="relative min-w-[1200px] px-8">
+        {/* Horizontal Line */}
+        <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300" />
 
         {/* Timeline Items */}
-        <div className="space-y-16">
+        <div className="relative flex justify-between items-center py-24">
           {experiences.map((experience, index) => (
-            <div key={experience.id} className="relative">
+            <div key={experience.id} className="relative flex-1">
               {/* Timeline Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500" />
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500" />
 
               {/* Content Container */}
               <motion.div
-                className={`relative ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'} w-5/12`}
-                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                animate={{ opacity: 1, x: 0 }}
+                className={`relative mx-4 ${index % 2 === 0 ? 'mb-24' : 'mt-24'}`}
+                initial={{ opacity: 0, y: index % 2 === 0 ? -50 : 50 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {/* Experience Card */}
