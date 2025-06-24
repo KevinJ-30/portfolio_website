@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaDownload, FaBriefcase, FaGraduationCap, FaTrophy, FaCode, FaBrain, FaTools } from 'react-icons/fa'
+import { FaDownload, FaBriefcase, FaGraduationCap, FaTrophy, FaCode, FaTools } from 'react-icons/fa'
 
 export default function Resume() {
   const experience = [
