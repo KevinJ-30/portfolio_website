@@ -1,0 +1,73 @@
+EDUCATION
+Georgia Institute of Technology
+Bachelor of Science in Computer Science
+Graduation: December 2026
+GPA: 4.00
+Concentrations: Artificial Intelligence and Theory
+Relevant Courses: Intro to AI, Computer Organization, Robot Perception, Data Structures & Algorithms, Object-Oriented Programming
+
+---
+
+EXPERIENCE
+
+Software Engineer Intern — Vantaca/HOAi (YC W22)
+May 2025 – July 2025
+- Built CLI tooling to automate developer AI stack setup (Cursor, Claude Desktop, MCPs)
+- Created auto-documentation agent using LangGraph and Azure Functions; integrates with Jira, PRs, and internal knowledge bases
+- Led migration from stdin-based MCPs to remote MCPs using Entra authentication on Azure
+
+Full Stack Developer — Alpha Kappa Psi, Georgia Tech
+December 2024 – Present
+- Built full-stack web platform (Rust, AWS Lambda, MongoDB, React) used by 300+ users for event tracking
+- Developed real-time check-in, comment posting, and interview scheduling features
+- Used Agile practices with Jira and Git for rapid integration of frontend and backend components
+
+ML Engineer Intern — Assistive Intelligence Lab, Georgia State University
+May 2023 – Present
+- Developed multitask ResNet model in PyTorch for annotator bias modeling (3.8% F1 improvement)
+- First-author on CVPR 2024 submission addressing subjective annotation noise
+- Built hybrid noise simulation pipeline combining disagreement and label noise
+- Deployed experiments using NVIDIA A100s and in-house GPU clusters
+
+Software Engineer Intern — Robinson College of Business
+August 2022 – December 2022
+- Suggested 100+ technical edits for machine learning textbook used by 300 students
+- Validated textbook code using Python and Scikit-learn across 9 chapters
+- Added projects on blockchain, finance, and cryptography for educational use
+
+---
+
+PROJECTS
+
+Multi-Agent Gemini LLM for Specialty Diagnosis (AI ATL Hackathon, Oct 2024)
+- Built 6-agent CrewAI system to triage patient cases based on symptoms and history using GCP
+- Created Streamlit + MongoDB app for real-time case routing and alert generation
+- Used RAG techniques to reduce demographic bias in diagnosis
+
+Gesture-Driven LLM Communication Platform (HackGT, Sep 2024)
+- Developed gesture-to-language system using MediaPipe + Gemini + Firebase
+- Built with Flask, HTML/CSS/JS; translated 25 gestures to natural language with 90% accuracy
+- Integrated LangChain + Firebase user profiles for personalized responses
+
+Refreshable Braille iOS App (Independent, Sep 2022 – Feb 2023)
+- Built iPhone app in Swift that converts text to braille using haptic feedback
+- Created 3D-printed navigation aid that boosted readability from 50% to 85%
+- Supported input via OCR and keyboard
+
+---
+
+LEADERSHIP
+
+Asian Student Alliance — Senior Intern & Community Outreach
+January 2022 – July 2024
+- Organized workshops with Asian Google Network and other community partners
+- Led student leadership conferences and panel discussions for 100+ attendees
+- Created tech/STEM showcase category at annual talent show for outreach
+
+---
+
+SKILLS & HONORS
+
+Programming: Python, Java, C, Rust, Swift, JavaScript, HTML/CSS, React, SQL, Flask, Firebase, MongoDB, Azure, GCP, AWS
+Machine Learning: PyTorch, LangChain, LangGraph, CrewAI, Ollama, Jupyter, OpenCV, Scikit-learn, Pandas, Seaborn
+Honors: National Merit Scholar ($2500), 2nd Place & National Qualifier GA JSHS ($1500), Best Solo Hack (HackGwinnett), Selected for NVIDIA/GT LLM Bootcamp

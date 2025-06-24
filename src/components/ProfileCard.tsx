@@ -1,19 +1,100 @@
+import { motion } from 'framer-motion'
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaDownload } from 'react-icons/fa'
 import profileImage from '../assets/KevinJacob_Headshot.jpg'
+
 export default function ProfileCard() {
-    return (
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-md text-center">
+  const socialLinks = [
+    { icon: FaGithub, url: 'https://github.com/kevinjacob', label: 'GitHub' },
+    { icon: FaLinkedin, url: 'https://linkedin.com/in/kevinjacob', label: 'LinkedIn' },
+    { icon: FaTwitter, url: 'https://twitter.com/kevinjacob', label: 'Twitter' },
+    { icon: FaEnvelope, url: 'mailto:kevin@example.com', label: 'Email' },
+  ]
+
+  return (
+    <motion.div 
+      className="max-w-4xl mx-auto px-4 mb-8"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <div className="glass p-8 rounded-2xl shadow-2xl text-center">
+        <motion.div
+          className="relative mb-6"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
           <img
             src={profileImage}
-            alt="Kevin"
-            className="w-32 h-32 mx-auto rounded-full mb-4 object-cover"
+            alt="Kevin Jacob"
+            className="w-40 h-40 mx-auto rounded-full object-cover border-4 border-white/20 shadow-xl"
           />
-          <h2 className="text-2xl font-semibold mb-2">Kevin J.</h2>
-          <p className="text-gray-600 mb-6">CS Student | Human-Centered AI</p>
-          <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-            Download Resume
-          </button>
-        </div>
+          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white animate-pulse"></div>
+        </motion.div>
+        
+        <motion.h2 
+          className="text-3xl font-bold mb-2 gradient-text"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          Kevin Jacob
+        </motion.h2>
+        
+        <motion.p 
+          className="text-xl text-gray-300 mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          Computer Science Student | Human-Centered AI Enthusiast
+        </motion.p>
+        
+        <motion.p 
+          className="text-gray-400 mb-6 max-w-2xl mx-auto leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          Passionate about creating AI solutions that make a real impact on people's lives. 
+          Specializing in multi-agent systems, computer vision, and accessibility technology.
+        </motion.p>
+        
+        <motion.div 
+          className="flex justify-center space-x-4 mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          {socialLinks.map((social, index) => (
+            <motion.a
+              key={social.label}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110"
+              whileHover={{ y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 + index * 0.1 }}
+            >
+              <social.icon className="text-xl" />
+            </motion.a>
+          ))}
+        </motion.div>
+        
+        <motion.button 
+          className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center space-x-2 mx-auto"
+          whileHover={{ scale: 1.05, y: -2 }}
+          whileTap={{ scale: 0.95 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
+        >
+          <FaDownload />
+          <span>Download Resume</span>
+        </motion.button>
       </div>
-    )
-  }
+    </motion.div>
+  )
+}

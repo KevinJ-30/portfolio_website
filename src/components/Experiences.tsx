@@ -6,74 +6,59 @@ interface Experience {
   title: string
   company: string
   date: string
-  description: string
+  description: string[]
   skills: string[]
 }
 
 const experiences: Experience[] = [
   {
     id: 1,
-    title: "Software Engineering Intern",
-    company: "Company Name",
-    date: "Summer 2023",
-    description: "Worked on developing and maintaining web applications using React and Node.js. Collaborated with cross-functional teams to implement new features and fix bugs.",
-    skills: ["React", "Node.js", "TypeScript", "Git"]
+    title: "Software Engineer Intern",
+    company: "Vantaca/HOAi (YC W22)",
+    date: "May 2025 – July 2025",
+    description: [
+      "Built CLI tooling to automate developer AI stack setup (Cursor, Claude Desktop, MCPs)",
+      "Created auto-documentation agent using LangGraph and Azure Functions; integrates with Jira, PRs, and internal knowledge bases",
+      "Led migration from stdin-based MCPs to remote MCPs using Entra authentication on Azure"
+    ],
+    skills: ["CLI", "LangGraph", "Azure", "Jira", "Entra"]
   },
   {
     id: 2,
-    title: "Research Assistant",
-    company: "University Name",
-    date: "2022-2023",
-    description: "Assisted in research projects related to machine learning and data analysis. Implemented algorithms and analyzed results.",
-    skills: ["Python", "Machine Learning", "Data Analysis"]
+    title: "Full Stack Developer",
+    company: "Alpha Kappa Psi, Georgia Tech",
+    date: "December 2024 – Present",
+    description: [
+      "Built full-stack web platform (Rust, AWS Lambda, MongoDB, React) used by 300+ users for event tracking",
+      "Developed real-time check-in, comment posting, and interview scheduling features",
+      "Used Agile practices with Jira and Git for rapid integration of frontend and backend components"
+    ],
+    skills: ["Rust", "AWS Lambda", "MongoDB", "React", "Agile", "Git"]
   },
   {
     id: 3,
-    title: "Teaching Assistant",
-    company: "University Department",
-    date: "2023-Present",
-    description: "Leading discussion sections and helping students understand complex programming concepts. Grading assignments and providing constructive feedback.",
-    skills: ["Teaching", "Python", "Java", "Communication"]
+    title: "ML Engineer Intern",
+    company: "Assistive Intelligence Lab, Georgia State University",
+    date: "May 2023 – Present",
+    description: [
+      "Developed multitask ResNet model in PyTorch for annotator bias modeling (3.8% F1 improvement)",
+      "First-author on CVPR 2024 submission addressing subjective annotation noise",
+      "Built hybrid noise simulation pipeline combining disagreement and label noise",
+      "Deployed experiments using NVIDIA A100s and in-house GPU clusters"
+    ],
+    skills: ["PyTorch", "ResNet", "NVIDIA", "Machine Learning", "CVPR"]
   },
   {
     id: 4,
-    title: "Web Development Intern",
-    company: "Tech Startup",
-    date: "Spring 2023",
-    description: "Developed and maintained client websites using modern web technologies. Implemented responsive designs and optimized performance.",
-    skills: ["HTML", "CSS", "JavaScript", "WordPress"]
-  },
-  {
-    id: 5,
-    title: "Data Science Project",
-    company: "University Research Lab",
-    date: "2022",
-    description: "Conducted data analysis and visualization for research projects. Developed predictive models using machine learning algorithms.",
-    skills: ["Python", "Pandas", "Scikit-learn", "Data Visualization"]
-  },
-  {
-    id: 6,
-    title: "Mobile App Development",
-    company: "Personal Project",
-    date: "2023",
-    description: "Created a cross-platform mobile application using React Native. Implemented user authentication and real-time data synchronization.",
-    skills: ["React Native", "Firebase", "Redux", "Mobile Development"]
-  },
-  {
-    id: 7,
-    title: "Hackathon Winner",
-    company: "University Hackathon",
-    date: "2022",
-    description: "Led a team to develop an innovative solution for sustainable living. Won first place in the university hackathon.",
-    skills: ["Team Leadership", "Rapid Prototyping", "Presentation", "Problem Solving"]
-  },
-  {
-    id: 8,
-    title: "Open Source Contributor",
-    company: "GitHub",
-    date: "2022-Present",
-    description: "Contributed to various open-source projects. Fixed bugs and implemented new features for popular repositories.",
-    skills: ["Git", "Open Source", "Code Review", "Documentation"]
+    title: "Software Engineer Intern",
+    company: "Robinson College of Business",
+    date: "August 2022 – December 2022",
+    description: [
+      "Suggested 100+ technical edits for machine learning textbook used by 300 students",
+      "Validated textbook code using Python and Scikit-learn across 9 chapters",
+      "Added projects on blockchain, finance, and cryptography for educational use"
+    ],
+    skills: ["Python", "Scikit-learn", "Machine Learning", "Education", "Blockchain"]
   }
 ]
 
@@ -140,7 +125,7 @@ export default function Timeline() {
                         transition={{ duration: 0.3 }}
                         className="mt-4"
                       >
-                        <p className="text-gray-600">{experience.description}</p>
+                        <p className="text-gray-600">{experience.description.join('\n')}</p>
                         <div className="mt-4 flex flex-wrap gap-2">
                           {experience.skills.map((skill, i) => (
                             <span
