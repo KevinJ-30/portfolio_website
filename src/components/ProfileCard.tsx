@@ -28,7 +28,6 @@ export default function ProfileCard() {
             alt="Kevin Jacob"
             className="w-40 h-40 mx-auto rounded-full object-cover border-4 border-white/20 shadow-xl"
           />
-          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white animate-pulse"></div>
         </motion.div>
         
         <motion.h2 
@@ -41,7 +40,7 @@ export default function ProfileCard() {
         </motion.h2>
         
         <motion.p 
-          className="text-xl text-gray-300 mb-4"
+          className="text-xl text-white/90 mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -50,7 +49,7 @@ export default function ProfileCard() {
         </motion.p>
         
         <motion.p 
-          className="text-gray-400 mb-6 max-w-2xl mx-auto leading-relaxed"
+          className="text-white/80 mb-6 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}

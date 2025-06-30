@@ -90,14 +90,14 @@ export default function Timeline() {
     >
       <div className="relative min-w-[1200px] px-8">
         {/* Horizontal Line */}
-        <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-300" />
+        <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-white/30" />
 
         {/* Timeline Items */}
         <div className="relative flex justify-between items-center py-24">
           {experiences.map((experience, index) => (
             <div key={experience.id} className="relative flex-1">
               {/* Timeline Dot */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500" />
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-400" />
 
               {/* Content Container */}
               <motion.div
@@ -108,13 +108,13 @@ export default function Timeline() {
               >
                 {/* Experience Card */}
                 <motion.div
-                  className="bg-white/10 backdrop-blur-sm rounded-lg shadow-lg p-6 cursor-pointer border border-gray-200/20 hover:border-gray-300/30 transition-colors"
+                  className="glass rounded-lg shadow-lg p-6 cursor-pointer border border-white/20 hover:border-white/30 transition-colors"
                   whileHover={{ scale: 1.02 }}
                   onClick={() => setSelectedId(selectedId === experience.id ? null : experience.id)}
                 >
-                  <h3 className="text-xl font-semibold text-gray-900">{experience.title}</h3>
-                  <p className="text-blue-600 font-medium">{experience.company}</p>
-                  <p className="text-gray-500 text-sm">{experience.date}</p>
+                  <h3 className="text-xl font-semibold text-white">{experience.title}</h3>
+                  <p className="text-blue-300 font-medium">{experience.company}</p>
+                  <p className="text-white/70 text-sm">{experience.date}</p>
                   
                   <AnimatePresence>
                     {selectedId === experience.id && (
@@ -125,12 +125,16 @@ export default function Timeline() {
                         transition={{ duration: 0.3 }}
                         className="mt-4"
                       >
-                        <p className="text-gray-600">{experience.description.join('\n')}</p>
+                        <div className="space-y-2">
+                          {experience.description.map((desc, i) => (
+                            <p key={i} className="text-white/80 text-sm">• {desc}</p>
+                          ))}
+                        </div>
                         <div className="mt-4 flex flex-wrap gap-2">
                           {experience.skills.map((skill, i) => (
                             <span
                               key={i}
-                              className="px-3 py-1 bg-blue-100/50 text-blue-800 rounded-full text-sm"
+                              className="px-3 py-1 bg-blue-400/20 text-blue-200 rounded-full text-sm border border-blue-400/30"
                             >
                               {skill}
                             </span>

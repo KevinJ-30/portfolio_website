@@ -83,7 +83,7 @@ export default function Projects() {
           <h1 className="text-6xl font-bold mb-6 gradient-text">
             My Projects
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             A collection of innovative projects showcasing my expertise in AI, accessibility technology, 
             and human-centered design. Each project represents a unique challenge and solution.
           </p>
@@ -108,7 +108,7 @@ export default function Projects() {
               >
                 <stat.icon className="text-3xl mx-auto mb-3 text-blue-400" />
                 <div className="text-3xl font-bold gradient-text mb-2">{stat.number}</div>
-                <div className="text-gray-300">{stat.label}</div>
+                <div className="text-white/80">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -166,12 +166,12 @@ export default function Projects() {
                 transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
               >
                 <h3 className="text-xl font-semibold mb-3 text-white">{project.title}</h3>
-                <p className="text-gray-300 mb-4 text-sm">{project.description}</p>
+                <p className="text-white/80 mb-4 text-sm">{project.description}</p>
                 
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, i) => (
-                      <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300">
+                      <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-xs text-white/80">
                         {tech}
                       </span>
                     ))}
@@ -214,7 +214,7 @@ export default function Projects() {
             <h2 className="text-3xl font-bold mb-6 gradient-text">
               Let's Build Something Amazing Together
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               I'm always excited to work on new projects and collaborate with innovative teams. 
               Whether it's AI, accessibility, or cutting-edge technology, I'm ready to contribute.
             </p>

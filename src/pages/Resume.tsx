@@ -91,7 +91,7 @@ export default function Resume() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-6xl font-bold mb-6 gradient-text">Resume</h1>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-white/90 mb-8">
             My professional journey, skills, and achievements
           </p>
           <motion.button 
@@ -129,10 +129,10 @@ export default function Resume() {
                     >
                       <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
                       <p className="text-blue-400 font-medium">{exp.company}</p>
-                      <p className="text-gray-400 text-sm mb-3">{exp.period}</p>
+                      <p className="text-white/70 text-sm mb-3">{exp.period}</p>
                       <ul className="space-y-2">
                         {exp.description.map((item, i) => (
-                          <li key={i} className="text-gray-300 text-sm flex items-start">
+                          <li key={i} className="text-white/80 text-sm flex items-start">
                             <span className="text-blue-400 mr-2">•</span>
                             {item}
                           </li>
@@ -164,12 +164,12 @@ export default function Resume() {
                   >
                     <h3 className="text-xl font-semibold text-white">{edu.degree}</h3>
                     <p className="text-blue-400 font-medium">{edu.school}</p>
-                    <p className="text-gray-400 text-sm mb-3">{edu.period} | GPA: {edu.gpa}</p>
+                    <p className="text-white/70 text-sm mb-3">{edu.period} | GPA: {edu.gpa}</p>
                     <div className="mb-4">
                       <h4 className="text-white font-medium mb-2">Relevant Courses:</h4>
                       <div className="flex flex-wrap gap-2">
                         {edu.relevantCourses.map((course, i) => (
-                          <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300">
+                          <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">
                             {course}
                           </span>
                         ))}
@@ -205,7 +205,7 @@ export default function Resume() {
                       <h3 className="text-white font-semibold mb-2">{category}</h3>
                       <div className="flex flex-wrap gap-2">
                         {skills.map((skill, i) => (
-                          <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300">
+                          <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">
                             {skill}
                           </span>
                         ))}
@@ -231,7 +231,7 @@ export default function Resume() {
                   {achievements.map((achievement, index) => (
                     <motion.li
                       key={achievement}
-                      className="text-gray-300 text-sm flex items-start"
+                      className="text-white/80 text-sm flex items-start"
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
@@ -259,7 +259,7 @@ export default function Resume() {
                   {certifications.map((cert, index) => (
                     <motion.div
                       key={cert}
-                      className="text-gray-300 text-sm"
+                      className="text-white/80 text-sm"
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: 1.1 + index * 0.1 }}

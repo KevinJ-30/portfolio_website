@@ -39,7 +39,7 @@ export default function Timeline() {
           <h1 className="text-6xl font-bold mb-6 gradient-text">
             My Journey
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             A timeline of my academic and professional achievements, showcasing my growth in AI and accessibility technology.
           </p>
         </motion.div>
@@ -66,8 +66,8 @@ export default function Timeline() {
               >
                 <div className="text-4xl font-bold gradient-text mb-4">{milestone.year}</div>
                 <FaStar className="text-3xl mx-auto mb-4 text-yellow-400" />
-                <h3 className="text-xl font-semibold mb-3">{milestone.title}</h3>
-                <p className="text-gray-300">{milestone.description}</p>
+                <h3 className="text-xl font-semibold mb-3 text-white">{milestone.title}</h3>
+                <p className="text-white/80">{milestone.description}</p>
               </motion.div>
             ))}
           </div>
@@ -84,7 +84,7 @@ export default function Timeline() {
               <FaClock className="text-3xl mr-3 text-blue-400" />
               <h2 className="text-4xl font-bold gradient-text">Detailed Timeline</h2>
             </div>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-white/80 max-w-2xl mx-auto">
               Explore my complete journey through education, internships, research, and achievements
             </p>
           </div>
@@ -100,7 +100,7 @@ export default function Timeline() {
         >
           <div className="glass p-8 rounded-2xl text-center">
             <h2 className="text-3xl font-bold mb-6 gradient-text">Looking Forward</h2>
-            <p className="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-xl text-white/90 leading-relaxed max-w-4xl mx-auto">
               "My goal is to continue pushing the boundaries of AI and accessibility technology, 
               creating solutions that make a real difference in people's lives. I'm excited to 
               collaborate with innovative teams and contribute to the future of human-centered AI."

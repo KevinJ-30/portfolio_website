@@ -7,6 +7,12 @@ interface ChatRequest {
 }
 
 export async function sendMessage({ message }: ChatRequest) {
+  // Check if API key is available
+  if (!API_CONFIG.GEMINI_API_KEY) {
+    console.error('Gemini API key is not configured')
+    throw new Error('API key not configured. Please check your environment variables.')
+  }
+
   const prompt = `
     You are a helpful assistant for a portfolio website. Make sure your answers are not too long. If a user asks for experiences maybe highlight a few rather than listing all unless they ask for more details. Make sure to always talk positively of Kevin. Refuse to talk about things not directly associated with Kevin or his resume. 
     Use this context to answer questions:
@@ -19,6 +25,9 @@ export async function sendMessage({ message }: ChatRequest) {
 
   try {
     console.log('Sending request to Gemini API...')
+    console.log('API URL:', API_CONFIG.GEMINI_API_URL)
+    console.log('API Key available:', !!API_CONFIG.GEMINI_API_KEY)
+    
     const response = await fetch(`${API_CONFIG.GEMINI_API_URL}?key=${API_CONFIG.GEMINI_API_KEY}`, {
       method: 'POST',
       headers: {
@@ -29,14 +38,23 @@ export async function sendMessage({ message }: ChatRequest) {
           parts: [{
             text: prompt
           }]
-        }]
+        }],
+        generationConfig: {
+          temperature: 0.7,
+          topK: 40,
+          topP: 0.95,
+          maxOutputTokens: 1024,
+        }
       })
     })
 
+    console.log('Response status:', response.status)
+    console.log('Response headers:', response.headers)
+
     if (!response.ok) {
-      const errorData = await response.json()
-      console.error('API Error:', errorData)
-      throw new Error(`API error: ${response.status} ${response.statusText}`)
+      const errorData = await response.text()
+      console.error('API Error Response:', errorData)
+      throw new Error(`API error: ${response.status} ${response.statusText} - ${errorData}`)
     }
 
     const data = await response.json()

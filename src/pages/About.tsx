@@ -59,7 +59,7 @@ export default function About() {
           <h1 className="text-6xl font-bold mb-6 gradient-text">
             About Me
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             I'm a Computer Science student with a passion for creating AI solutions that make a real impact on people's lives.
           </p>
         </motion.div>
@@ -75,16 +75,16 @@ export default function About() {
             <h2 className="text-3xl font-bold mb-6 gradient-text">My Story</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-white/90 leading-relaxed mb-4">
                   My journey in technology began with a simple curiosity about how computers could help people. 
                   What started as basic programming quickly evolved into a deep fascination with artificial intelligence 
                   and its potential to solve complex human problems.
                 </p>
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-white/90 leading-relaxed mb-4">
                   I believe that technology should be accessible to everyone, regardless of their abilities or background. 
                   This belief drives my work in accessibility technology and human-centered AI design.
                 </p>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-white/90 leading-relaxed">
                   When I'm not coding or researching, you'll find me exploring the outdoors, reading about emerging technologies, 
                   or collaborating with other developers on open-source projects that make a difference.
                 </p>
@@ -117,10 +117,10 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
               >
                 <FaGraduationCap className="text-3xl mb-4 text-blue-400" />
-                <h3 className="text-xl font-semibold mb-2">{edu.degree}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-white">{edu.degree}</h3>
                 <p className="text-blue-400 mb-2">{edu.school}</p>
-                <p className="text-gray-400 mb-3">{edu.year}</p>
-                <p className="text-gray-300 text-sm">{edu.description}</p>
+                <p className="text-white/70 mb-3">{edu.year}</p>
+                <p className="text-white/80 text-sm">{edu.description}</p>
               </motion.div>
             ))}
           </div>
@@ -145,8 +145,8 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
               >
                 <interest.icon className="text-3xl mb-4 text-blue-400" />
-                <h3 className="text-xl font-semibold mb-3">{interest.title}</h3>
-                <p className="text-gray-300">{interest.description}</p>
+                <h3 className="text-xl font-semibold mb-3 text-white">{interest.title}</h3>
+                <p className="text-white/80">{interest.description}</p>
               </motion.div>
             ))}
           </div>
@@ -171,7 +171,7 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
               >
                 <h3 className="text-lg font-semibold mb-2 gradient-text">{info.label}</h3>
-                <p className="text-gray-300">{info.value}</p>
+                <p className="text-white/80">{info.value}</p>
               </motion.div>
             ))}
           </div>
@@ -186,7 +186,7 @@ export default function About() {
         >
           <div className="glass p-8 rounded-2xl">
             <h2 className="text-3xl font-bold mb-6 gradient-text">My Mission</h2>
-            <p className="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-xl text-white/90 leading-relaxed max-w-4xl mx-auto">
               "To create technology that not only solves problems but also makes the world more accessible, 
               inclusive, and better for everyone. I believe that the best technology is the kind that you 
               don't notice - it just works, and it works for everyone."
