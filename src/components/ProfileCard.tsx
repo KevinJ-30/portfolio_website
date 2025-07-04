@@ -1,13 +1,12 @@
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaDownload } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa'
 import profileImage from '../assets/KevinJacob_Headshot.jpg'
 
 export default function ProfileCard() {
   const socialLinks = [
-    { icon: FaGithub, url: 'https://github.com/kevinjacob', label: 'GitHub' },
-    { icon: FaLinkedin, url: 'https://linkedin.com/in/kevinjacob', label: 'LinkedIn' },
-    { icon: FaTwitter, url: 'https://twitter.com/kevinjacob', label: 'Twitter' },
-    { icon: FaEnvelope, url: 'mailto:kevin@example.com', label: 'Email' },
+    { icon: FaGithub, url: 'https://github.com/KevinJ-30', label: 'GitHub' },
+    { icon: FaLinkedin, url: 'https://linkedin.com/in/kevin-jacob1', label: 'LinkedIn' },
+    { icon: FaEnvelope, url: 'mailto:kevinmatjacob@gmail.com', label: 'Email' },
   ]
 
   return (
@@ -55,7 +54,7 @@ export default function ProfileCard() {
           transition={{ delay: 0.4 }}
         >
           Passionate about creating AI solutions that make a real impact on people's lives. 
-          Specializing in multi-agent systems, computer vision, and accessibility technology.
+          Specializing in multi-agent systems, natural language processing, and accessibility technology.
         </motion.p>
         
         <motion.div 
@@ -82,8 +81,11 @@ export default function ProfileCard() {
           ))}
         </motion.div>
         
-        <motion.button 
-          className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center space-x-2 mx-auto"
+        <motion.a
+          href="/Kevin_Jacob_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex justify-center items-center space-x-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 mx-auto"
           whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           initial={{ opacity: 0 }}
@@ -92,7 +94,7 @@ export default function ProfileCard() {
         >
           <FaDownload />
           <span>Download Resume</span>
-        </motion.button>
+        </motion.a>
       </div>
     </motion.div>
   )

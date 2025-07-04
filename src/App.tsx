@@ -5,6 +5,7 @@ import About from './pages/About'
 import Resume from './pages/Resume'
 import Projects from './pages/Projects'
 import Timeline from './pages/Timeline'
+import Chatbot from './components/Chatbot'
 
 export default function App() {
   return (
@@ -17,6 +18,10 @@ export default function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/timeline" element={<Timeline />} />
       </Routes>
+      {/* Global Chatbot - fixed to bottom right */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Chatbot />
+      </div>
     </Router>
   )
 }

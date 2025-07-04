@@ -158,38 +158,16 @@ export default function Chatbot() {
       </AnimatePresence>
 
       {/* Chat Button */}
-      <motion.button
-        onClick={toggleChat}
-        className={`w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center ${
-          isOpen ? 'scale-90' : 'scale-100 hover:scale-110'
-        }`}
-        whileHover={{ scale: isOpen ? 0.9 : 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <FaTimes size={20} />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="chat"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <FaComments size={20} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.button>
+      {!isOpen && (
+        <motion.button
+          onClick={toggleChat}
+          className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FaComments size={32} />
+        </motion.button>
+      )}
     </div>
   )
 }

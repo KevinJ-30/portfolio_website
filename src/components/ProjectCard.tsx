@@ -18,7 +18,7 @@ export default function ProjectCard({
   liveUrl 
 }: ProjectCardProps) {
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div className="glass rounded-xl overflow-hidden hover:scale-105 transition-all duration-300">
       {/* Project Image */}
       <div className="relative h-48 overflow-hidden">
         <img
@@ -30,15 +30,15 @@ export default function ProjectCard({
 
       {/* Project Content */}
       <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+        <p className="text-white/80 mb-4 text-sm leading-relaxed">{description}</p>
 
         {/* Technologies Used */}
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, index) => (
             <span 
               key={index}
-              className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+              className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-xs"
             >
               {tech}
             </span>
@@ -52,21 +52,21 @@ export default function ProjectCard({
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-700 hover:text-gray-900"
+              className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
             >
               <FaGithub className="text-xl" />
-              <span>GitHub</span>
+              <span className="text-sm">GitHub</span>
             </a>
           )}
-          {liveUrl && (
+          {liveUrl && liveUrl !== "#" && (
             <a
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-700 hover:text-gray-900"
+              className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
             >
               <FaExternalLinkAlt className="text-xl" />
-              <span>Live Demo</span>
+              <span className="text-sm">Live Demo</span>
             </a>
           )}
         </div>

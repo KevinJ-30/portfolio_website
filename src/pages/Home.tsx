@@ -6,22 +6,22 @@ import Chatbot from '../components/Chatbot'
 export default function Home() {
   const skills = [
     { name: 'Python', level: 90, icon: FaCode },
-    { name: 'Machine Learning', level: 85, icon: FaBrain },
-    { name: 'React/TypeScript', level: 80, icon: FaCode },
-    { name: 'Computer Vision', level: 75, icon: FaBrain },
-    { name: 'Team Leadership', level: 85, icon: FaUsers },
+    { name: 'Machine Learning', level: 90, icon: FaBrain },
+    { name: 'Leadership', level: 95, icon: FaUsers },
+    { name: 'Java', level: 80, icon: FaCode },
+    { name: 'Azure/AWS', level: 85, icon: FaCode },
   ]
 
   const highlights = [
     {
       icon: FaRocket,
       title: "AI Innovation",
-      description: "Built multi-agent systems for medical diagnosis and accessibility solutions"
+      description: "Built AI agents for medical diagnosis and accessibility solutions"
     },
     {
       icon: FaStar,
       title: "Research Excellence",
-      description: "Published research on human-centered AI and computer vision applications"
+      description: "Working on research in subjective NLP classification and model evaluation"
     },
     {
       icon: FaUsers,
@@ -132,10 +132,10 @@ export default function Home() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { number: "15+", label: "Projects Completed" },
-              { number: "3", label: "Research Papers" },
-              { number: "5+", label: "Technologies Mastered" },
-              { number: "100%", label: "Client Satisfaction" }
+              { number: "5+", label: "Projects Completed" },
+              { number: "3", label: "Papers in Progress" },
+              { number: "100%", label: "Dedication to Tech" },
+              { number: "∞", label: "Passion for AI" }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -159,10 +159,10 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <h2 className="text-4xl font-bold text-center mb-8 gradient-text">
-            Let's Chat!
+            Meet Kevin-Bot!
           </h2>
           <p className="text-center text-white/80 mb-8">
-            Ask me anything about my work, skills, or projects. I'm here to help!
+            Click the chat icon in the bottom right corner to ask questions about Kevin's work, skills, or projects.
           </p>
           <Chatbot />
         </motion.div>

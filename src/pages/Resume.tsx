@@ -1,39 +1,39 @@
 import { motion } from 'framer-motion'
-import { FaDownload, FaBriefcase, FaGraduationCap, FaTrophy, FaCode, FaTools } from 'react-icons/fa'
+import { FaDownload, FaBriefcase, FaGraduationCap, FaTrophy, FaCode } from 'react-icons/fa'
 
 export default function Resume() {
   const experience = [
     {
-      title: "AI Research Intern",
-      company: "TechCorp AI",
-      period: "May 2024 - Present",
+      title: "Software Engineer Intern",
+      company: "Vantaca + HOAi (YC W22)",
+      period: "May 2025 - July 2025",
+      location: "Wilmington, NC",
       description: [
-        "Developed multi-agent systems for medical diagnosis using CrewAI and GCP",
-        "Implemented RAG techniques to reduce demographic bias in AI diagnosis",
-        "Built Streamlit + MongoDB application for real-time case routing",
-        "Collaborated with medical professionals to validate AI solutions"
+        "Developed a LangGraph-powered agent triggered on Jira updates that auto-generates documentation by analyzing PRs and retrieving internal context via semantic search, accelerating doc workflows by 3× across 50+ tickets/week",
+        "Resolved validation bugs in TypeScript CLI for AI stack onboarding, preventing misconfigurations for 40+ engineers",
+        "Deploying hosted MCPs via Azure App Services with custom OAuth for secure LLM knowledge access by 200+ staff"
       ]
     },
     {
-      title: "Software Engineering Intern",
-      company: "InnovateTech Solutions",
-      period: "June 2023 - August 2023",
+      title: "ML Research Intern",
+      company: "Assistive Intelligence Lab - Georgia State University",
+      period: "May 2023 - Present",
+      location: "Atlanta, GA",
       description: [
-        "Built gesture-to-language communication platform using MediaPipe and Gemini",
-        "Achieved 90% accuracy in gesture recognition and translation",
-        "Integrated LangChain with Firebase for personalized user experiences",
-        "Led team of 3 developers in agile development process"
+        "Developed NRA-Embed, a noise-robust annotator embedding method combining annotator-aware representations with robust contrastive loss, boosting performance on NLP classification tasks by up to 12% F1 over prior SOTA",
+        "Led EMNLP '25 submission on separating annotator disagreement from annotation noise in subjective classification",
+        "Deployed scalable ML pipelines across 1-12 GPU setups, reducing training time by 80% on on-premise clusters"
       ]
     },
     {
-      title: "Accessibility Technology Researcher",
-      company: "University Research Lab",
-      period: "January 2023 - December 2023",
+      title: "Software Development Project Manager",
+      company: "Alpha Kappa Psi Business Fraternity - Georgia Tech",
+      period: "Dec 2024 - Present",
+      location: "Atlanta, GA",
       description: [
-        "Developed iOS app for refreshable braille using haptic feedback",
-        "Created 3D-printed navigation aid improving readability by 35%",
-        "Implemented OCR and keyboard input support for accessibility",
-        "Published research paper on assistive technology innovations"
+        "Engineered full-stack web app in Rust, AWS Lambda, React, and MongoDB to track event attendance for 300+ users",
+        "Developed features for real-time attendance, commenting, & interview scheduling to streamline recruitment processes",
+        "Leading Agile workflows for a 9-engineer team, improving development velocity and cross-team collaboration"
       ]
     }
   ]
@@ -41,38 +41,63 @@ export default function Resume() {
   const education = [
     {
       degree: "Bachelor of Science in Computer Science",
-      school: "University of Technology",
-      period: "2022 - 2026",
-      gpa: "3.9/4.0",
+      school: "Georgia Institute of Technology, Atlanta, GA",
+      period: "May 2027",
+      gpa: "4.00",
+      concentrations: "Artificial Intelligence and Theory",
       relevantCourses: [
-        "Artificial Intelligence", "Machine Learning", "Computer Vision",
-        "Human-Computer Interaction", "Data Structures & Algorithms",
-        "Software Engineering", "Database Systems"
+        "Intro to AI", "Computer Organization", "Robotics and Perception", 
+        "Data Structures and Algorithms", "OOP"
+      ]
+    }
+  ]
+
+  const projects = [
+    {
+      title: "MedMap.ai - AI ATL",
+      period: "Oct 2024",
+      technologies: "CrewAI, Streamlit, MongoDB, GCP, Python",
+      description: [
+        "Designed 6-agent LLM CrewAI system to analyze patient history/symptoms, routing cases to 3 specialties in <10s",
+        "Developed Streamlit & MongoDB Atlas app for real-time symptom input and specialist routing with 95% accuracy",
+        "Created RAG-enabled agents for medical diagnosis and bias detection, reducing demographic disparities in care"
+      ]
+    },
+    {
+      title: "Gesture Driven LLM - HackGT",
+      period: "Sep 2024",
+      technologies: "Python, Javascript, HTML/CSS, Firebase, Gemini",
+      description: [
+        "Engineered Flask app to aid communication for nonverbal users with Python, HTML, CSS, JavaScript, and Firebase",
+        "Built MediaPipe-Gemini pipeline, translating 25 hand gestures into natural language replies with 90% accuracy",
+        "Implemented RAG with LangChain for personalized responses from Firebase profile with sub-5s response time"
+      ]
+    },
+    {
+      title: "Refreshable Braille iOS App",
+      period: "Sep 2022 - Feb 2023",
+      technologies: "Swift, OCR",
+      description: [
+        "Built iPhone app in Swift converting text to braille using haptic feedback, reaching 85% readability in user testing",
+        "Designed 3D-printed navigation guide to assist app usage, improving readability accuracy from 50% to 85%",
+        "Enabled text input via camera (OCR) and keyboard, expanding accessibility options for visually impaired users"
       ]
     }
   ]
 
   const technicalSkills = {
-    "Programming Languages": ["Python", "JavaScript/TypeScript", "Swift", "Java", "C++"],
-    "AI/ML Technologies": ["TensorFlow", "PyTorch", "Scikit-learn", "OpenCV", "MediaPipe"],
-    "Web Technologies": ["React", "Node.js", "Flask", "MongoDB", "PostgreSQL"],
-    "Cloud & DevOps": ["AWS", "GCP", "Docker", "Git", "CI/CD"],
-    "Tools & Frameworks": ["CrewAI", "LangChain", "Streamlit", "Firebase", "SwiftUI"]
+    "Programming": ["Python", "Java", "C", "Rust", "Swift", "JavaScript", "React", "SQL", "Flask", "Firebase", "MongoDB"],
+    "Cloud & Platforms": ["Azure", "GCP", "AWS"],
+    "Machine Learning": ["PyTorch", "LangChain", "LangGraph", "CrewAI", "Ollama", "Jupyter", "OpenCV", "Scikit-learn", "Pandas", "Seaborn"]
   }
 
-  const achievements = [
-    "Published 3 research papers on AI and accessibility technology",
-    "Led team that won 1st place at University Hackathon 2024",
-    "Recipient of Dean's List for Academic Excellence (2022-2024)",
-    "Speaker at AI Accessibility Conference 2024",
-    "Open source contributor with 500+ stars on GitHub"
-  ]
 
-  const certifications = [
-    "Google Cloud Professional Data Engineer",
-    "AWS Certified Solutions Architect",
-    "TensorFlow Developer Certificate",
-    "Microsoft Azure AI Fundamentals"
+
+  const honors = [
+    "National Merit Scholar ($2500)",
+    "2nd Place ($1500) & National Qualifier, GA JSHS",
+    "Best Solo Hack, HackGwinnett",
+    "Selected for NVIDIA/GT LLM Bootcamp"
   ]
 
   return (
@@ -94,14 +119,17 @@ export default function Resume() {
           <p className="text-xl text-white/90 mb-8">
             My professional journey, skills, and achievements
           </p>
-          <motion.button 
-            className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center space-x-2 mx-auto"
+          <motion.a
+            href="/Kevin_Jacob_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex justify-center items-center space-x-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 mx-auto"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
             <FaDownload />
             <span>Download PDF</span>
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -129,7 +157,7 @@ export default function Resume() {
                     >
                       <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
                       <p className="text-blue-400 font-medium">{exp.company}</p>
-                      <p className="text-white/70 text-sm mb-3">{exp.period}</p>
+                      <p className="text-white/70 text-sm mb-3">{exp.period} | {exp.location}</p>
                       <ul className="space-y-2">
                         {exp.description.map((item, i) => (
                           <li key={i} className="text-white/80 text-sm flex items-start">
@@ -165,6 +193,7 @@ export default function Resume() {
                     <h3 className="text-xl font-semibold text-white">{edu.degree}</h3>
                     <p className="text-blue-400 font-medium">{edu.school}</p>
                     <p className="text-white/70 text-sm mb-3">{edu.period} | GPA: {edu.gpa}</p>
+                    <p className="text-white/80 text-sm mb-3">Concentrations: {edu.concentrations}</p>
                     <div className="mb-4">
                       <h4 className="text-white font-medium mb-2">Relevant Courses:</h4>
                       <div className="flex flex-wrap gap-2">
@@ -177,6 +206,43 @@ export default function Resume() {
                     </div>
                   </motion.div>
                 ))}
+              </div>
+            </motion.div>
+
+            {/* Projects */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <div className="glass p-6 rounded-xl">
+                <div className="flex items-center mb-6">
+                  <FaCode className="text-2xl mr-3 text-blue-400" />
+                  <h2 className="text-3xl font-bold gradient-text">Projects</h2>
+                </div>
+                <div className="space-y-6">
+                  {projects.map((project, index) => (
+                    <motion.div
+                      key={project.title}
+                      className="border-l-4 border-green-400 pl-6"
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                    >
+                      <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+                      <p className="text-green-400 font-medium">{project.technologies}</p>
+                      <p className="text-white/70 text-sm mb-3">{project.period}</p>
+                      <ul className="space-y-2">
+                        {project.description.map((item, i) => (
+                          <li key={i} className="text-white/80 text-sm flex items-start">
+                            <span className="text-green-400 mr-2">•</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
@@ -216,7 +282,7 @@ export default function Resume() {
               </div>
             </motion.div>
 
-            {/* Achievements */}
+            {/* Honors */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -225,50 +291,22 @@ export default function Resume() {
               <div className="glass p-6 rounded-xl">
                 <div className="flex items-center mb-6">
                   <FaTrophy className="text-2xl mr-3 text-blue-400" />
-                  <h2 className="text-2xl font-bold gradient-text">Achievements</h2>
+                  <h2 className="text-2xl font-bold gradient-text">Honors & Awards</h2>
                 </div>
                 <ul className="space-y-3">
-                  {achievements.map((achievement, index) => (
+                  {honors.map((honor, index) => (
                     <motion.li
-                      key={achievement}
+                      key={honor}
                       className="text-white/80 text-sm flex items-start"
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
                     >
                       <span className="text-yellow-400 mr-2">🏆</span>
-                      {achievement}
+                      {honor}
                     </motion.li>
                   ))}
                 </ul>
-              </div>
-            </motion.div>
-
-            {/* Certifications */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
-            >
-              <div className="glass p-6 rounded-xl">
-                <div className="flex items-center mb-6">
-                  <FaTools className="text-2xl mr-3 text-blue-400" />
-                  <h2 className="text-2xl font-bold gradient-text">Certifications</h2>
-                </div>
-                <div className="space-y-3">
-                  {certifications.map((cert, index) => (
-                    <motion.div
-                      key={cert}
-                      className="text-white/80 text-sm"
-                      initial={{ opacity: 0, x: 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: 1.1 + index * 0.1 }}
-                    >
-                      <span className="text-blue-400 mr-2">✓</span>
-                      {cert}
-                    </motion.div>
-                  ))}
-                </div>
               </div>
             </motion.div>
           </div>

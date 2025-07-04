@@ -13,52 +13,51 @@ interface Experience {
 const experiences: Experience[] = [
   {
     id: 1,
-    title: "Software Engineer Intern",
-    company: "Vantaca/HOAi (YC W22)",
-    date: "May 2025 – July 2025",
+    title: "Senior Intern & Community Outreach",
+    company: "Asian Student Alliance",
+    date: "Jan 2022 – Jul 2024",
     description: [
-      "Built CLI tooling to automate developer AI stack setup (Cursor, Claude Desktop, MCPs)",
-      "Created auto-documentation agent using LangGraph and Azure Functions; integrates with Jira, PRs, and internal knowledge bases",
-      "Led migration from stdin-based MCPs to remote MCPs using Entra authentication on Azure"
+      "Crafted educational workshops with Asian Google Network to expand community partnerships by 50%",
+      "Led leadership conferences and secured expert panel participants, increasing cultural awareness for 100+ students"
     ],
-    skills: ["CLI", "LangGraph", "Azure", "Jira", "Entra"]
+    skills: ["Leadership", "Community Outreach", "Event Planning", "Partnerships"]
   },
+
   {
     id: 2,
-    title: "Full Stack Developer",
-    company: "Alpha Kappa Psi, Georgia Tech",
-    date: "December 2024 – Present",
+    title: "ML Research Intern",
+    company: "Assistive Intelligence Lab - Georgia State University",
+    date: "May 2023 – Present",
     description: [
-      "Built full-stack web platform (Rust, AWS Lambda, MongoDB, React) used by 300+ users for event tracking",
-      "Developed real-time check-in, comment posting, and interview scheduling features",
-      "Used Agile practices with Jira and Git for rapid integration of frontend and backend components"
+      "Developed NRA-Embed, a noise-robust annotator embedding method combining annotator-aware representations with robust contrastive loss, boosting performance on NLP classification tasks by up to 12% F1 over prior SOTA",
+      "Led EMNLP '25 submission on separating annotator disagreement from annotation noise in subjective classification",
+      "Deployed scalable ML pipelines across 1-12 GPU setups, reducing training time by 80% on on-premise clusters"
     ],
-    skills: ["Rust", "AWS Lambda", "MongoDB", "React", "Agile", "Git"]
+    skills: ["PyTorch", "NLP", "Machine Learning", "Research", "GPU Clusters"]
   },
   {
     id: 3,
-    title: "ML Engineer Intern",
-    company: "Assistive Intelligence Lab, Georgia State University",
-    date: "May 2023 – Present",
+    title: "Software Development Project Manager",
+    company: "Alpha Kappa Psi Business Fraternity - Georgia Tech",
+    date: "Dec 2024 – Present",
     description: [
-      "Developed multitask ResNet model in PyTorch for annotator bias modeling (3.8% F1 improvement)",
-      "First-author on CVPR 2024 submission addressing subjective annotation noise",
-      "Built hybrid noise simulation pipeline combining disagreement and label noise",
-      "Deployed experiments using NVIDIA A100s and in-house GPU clusters"
+      "Engineered full-stack web app in Rust, AWS Lambda, React, and MongoDB to track event attendance for 300+ users",
+      "Developed features for real-time attendance, commenting, & interview scheduling to streamline recruitment processes",
+      "Leading Agile workflows for a 9-engineer team, improving development velocity and cross-team collaboration"
     ],
-    skills: ["PyTorch", "ResNet", "NVIDIA", "Machine Learning", "CVPR"]
+    skills: ["Rust", "AWS Lambda", "React", "MongoDB", "Agile", "Leadership"]
   },
   {
     id: 4,
     title: "Software Engineer Intern",
-    company: "Robinson College of Business",
-    date: "August 2022 – December 2022",
+    company: "Vantaca + HOAi (YC W22)",
+    date: "May 2025 – July 2025",
     description: [
-      "Suggested 100+ technical edits for machine learning textbook used by 300 students",
-      "Validated textbook code using Python and Scikit-learn across 9 chapters",
-      "Added projects on blockchain, finance, and cryptography for educational use"
+      "Developed a LangGraph-powered agent triggered on Jira updates that auto-generates documentation by analyzing PRs and retrieving internal context via semantic search, accelerating doc workflows by 3× across 50+ tickets/week",
+      "Resolved validation bugs in TypeScript CLI for AI stack onboarding, preventing misconfigurations for 40+ engineers",
+      "Deploying hosted MCPs via Azure App Services with custom OAuth for secure LLM knowledge access by 200+ staff"
     ],
-    skills: ["Python", "Scikit-learn", "Machine Learning", "Education", "Blockchain"]
+    skills: ["LangGraph", "TypeScript", "Azure", "MCPs", "Jira", "AI/ML"]
   }
 ]
 
@@ -108,13 +107,13 @@ export default function Timeline() {
               >
                 {/* Experience Card */}
                 <motion.div
-                  className="glass rounded-lg shadow-lg p-6 cursor-pointer border border-white/20 hover:border-white/30 transition-colors"
+                  className="glass rounded-lg shadow-lg p-6 cursor-pointer border border-white/20 hover:border-white/30 transition-colors max-w-sm"
                   whileHover={{ scale: 1.02 }}
                   onClick={() => setSelectedId(selectedId === experience.id ? null : experience.id)}
                 >
-                  <h3 className="text-xl font-semibold text-white">{experience.title}</h3>
-                  <p className="text-blue-300 font-medium">{experience.company}</p>
-                  <p className="text-white/70 text-sm">{experience.date}</p>
+                  <h3 className="text-lg font-semibold text-white mb-2 leading-tight">{experience.title}</h3>
+                  <p className="text-blue-300 font-medium text-sm mb-1">{experience.company}</p>
+                  <p className="text-white/70 text-xs mb-3">{experience.date}</p>
                   
                   <AnimatePresence>
                     {selectedId === experience.id && (
@@ -125,16 +124,16 @@ export default function Timeline() {
                         transition={{ duration: 0.3 }}
                         className="mt-4"
                       >
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                           {experience.description.map((desc, i) => (
-                            <p key={i} className="text-white/80 text-sm">• {desc}</p>
+                            <p key={i} className="text-white/90 text-sm leading-relaxed">• {desc}</p>
                           ))}
                         </div>
                         <div className="mt-4 flex flex-wrap gap-2">
                           {experience.skills.map((skill, i) => (
                             <span
                               key={i}
-                              className="px-3 py-1 bg-blue-400/20 text-blue-200 rounded-full text-sm border border-blue-400/30"
+                              className="px-2 py-1 bg-blue-400/20 text-blue-200 rounded-full text-xs border border-blue-400/30"
                             >
                               {skill}
                             </span>

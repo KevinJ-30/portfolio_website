@@ -5,8 +5,8 @@ export default function About() {
   const education = [
     {
       degree: "Bachelor of Science in Computer Science",
-      school: "University of Technology",
-      year: "2022 - 2026",
+      school: "Georgia Institute of Technology",
+      year: "2024 - 2027",
       description: "Focusing on Artificial Intelligence, Machine Learning, and Human-Computer Interaction"
     }
   ]
@@ -29,16 +29,16 @@ export default function About() {
     },
     {
       icon: FaLightbulb,
-      title: "Innovation",
-      description: "Always exploring new technologies and pushing the boundaries of what's possible"
+      title: "Model Context Protocols",
+      description: "Currently exploring MCPs and pushing the boundaries of what's possible"
     }
   ]
 
   const personalInfo = [
-    { label: "Location", value: "San Francisco, CA" },
-    { label: "Languages", value: "English, Spanish, French" },
+    { label: "Location", value: "Atlanta, GA" },
+    { label: "Languages", value: "English, Spanish, Malayalam" },
     { label: "Interests", value: "AI Research, Accessibility, Open Source" },
-    { label: "Hobbies", value: "Hiking, Reading, Photography" }
+    { label: "Hobbies", value: "Hiking, Reading, Cello" }
   ]
 
   return (
@@ -76,13 +76,14 @@ export default function About() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
                 <p className="text-white/90 leading-relaxed mb-4">
-                  My journey in technology began with a simple curiosity about how computers could help people. 
-                  What started as basic programming quickly evolved into a deep fascination with artificial intelligence 
-                  and its potential to solve complex human problems.
+                  My passion for research began in high school, where I first discovered the thrill of exploring new technologies 
+                  and solving complex problems. This early experience with research ignited my curiosity and set me on a path 
+                  toward creating meaningful AI solutions.
                 </p>
                 <p className="text-white/90 leading-relaxed mb-4">
                   I believe that technology should be accessible to everyone, regardless of their abilities or background. 
-                  This belief drives my work in accessibility technology and human-centered AI design.
+                  This belief drives my work in accessibility technology and human-centered AI design, ensuring that the 
+                  solutions I create benefit people from all walks of life.
                 </p>
                 <p className="text-white/90 leading-relaxed">
                   When I'm not coding or researching, you'll find me exploring the outdoors, reading about emerging technologies, 
@@ -106,16 +107,17 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <h2 className="text-3xl font-bold text-center mb-12 gradient-text">Education</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {education.map((edu, index) => (
-              <motion.div
-                key={edu.degree}
-                className="glass p-6 rounded-xl"
-                whileHover={{ scale: 1.05, y: -5 }}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-              >
+          <div className="flex justify-center">
+            <div className="max-w-md">
+              {education.map((edu, index) => (
+                <motion.div
+                  key={edu.degree}
+                  className="glass p-6 rounded-xl"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                >
                 <FaGraduationCap className="text-3xl mb-4 text-blue-400" />
                 <h3 className="text-xl font-semibold mb-2 text-white">{edu.degree}</h3>
                 <p className="text-blue-400 mb-2">{edu.school}</p>
@@ -123,6 +125,7 @@ export default function About() {
                 <p className="text-white/80 text-sm">{edu.description}</p>
               </motion.div>
             ))}
+            </div>
           </div>
         </motion.div>
 
