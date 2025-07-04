@@ -1,5 +1,7 @@
 // src/config/api.ts
+// This file is no longer needed as we're using a secure backend API route
+// The API key is now stored securely on the server side
+
 export const API_CONFIG = {
-    GEMINI_API_KEY: import.meta.env.VITE_GEMINI_API_KEY,
-    GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'
-  }
+  // No client-side API configuration needed
+}
