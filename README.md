@@ -1,6 +1,58 @@
-# React + TypeScript + Vite
+# Kevin Jacob's Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern portfolio website built with React, TypeScript, and Vite, featuring an AI-powered chatbot using Google's Gemini API.
+
+## Features
+
+- **Modern UI**: Built with React, TypeScript, and Tailwind CSS
+- **AI Chatbot**: Powered by Google's Gemini API for interactive conversations
+- **Responsive Design**: Works seamlessly across all devices
+- **Fast Performance**: Optimized with Vite for lightning-fast builds
+
+## Setup Instructions
+
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure Gemini API
+
+1. Get your Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Create a `.env.local` file in the root directory with:
+   ```
+   GEMINI_API_KEY=your_actual_api_key_here
+   ```
+
+### 3. Development
+
+For development with hot reload:
+```bash
+npm run dev
+```
+
+For full-stack development (includes API server):
+```bash
+npm run dev:full
+```
+
+### 4. Production Build
+
+```bash
+npm run build
+npm start
+```
+
+## API Configuration
+
+The chatbot uses a secure backend API that keeps your Gemini API key safe. The API is implemented as:
+- **Development**: Express.js server (`server.js`)
+- **Production**: Vercel serverless functions (`api/chat.ts`)
+
+## Deployment
+
+This project is configured for deployment on Vercel. The `vercel.json` file handles routing and API configuration automatically.
 
 Currently, two official plugins are available:
 
