@@ -96,4 +96,4 @@ const handler = async (req: VercelRequest, res: VercelResponse) => {
   }
 } 
 
-module.exports = handler;
+exports.default = handler;
