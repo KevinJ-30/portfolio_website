@@ -14,6 +14,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const [canShowButton, setCanShowButton] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -67,7 +68,9 @@ export default function Chatbot() {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {/* Chat Widget */}
-      <AnimatePresence>
+      <AnimatePresence
+        onExitComplete={() => setCanShowButton(true)}
+      >
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -75,6 +78,7 @@ export default function Chatbot() {
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.3 }}
             className="mb-4 w-80 h-96 bg-white rounded-2xl shadow-2xl flex flex-col border border-gray-200"
+            onAnimationStart={() => setCanShowButton(false)}
           >
             {/* Chat Header */}
             <div className="p-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-2xl flex justify-between items-center">
@@ -158,15 +162,15 @@ export default function Chatbot() {
       </AnimatePresence>
 
       {/* Chat Button */}
-      {!isOpen && (
+      {!isOpen && canShowButton && (
         <motion.button
-        onClick={toggleChat}
-        className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <FaComments className="w-10 h-10" />
-      </motion.button>
+          onClick={toggleChat}
+          className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FaComments className="w-10 h-10" />
+        </motion.button>
       )}
     </div>
   )
