@@ -160,13 +160,13 @@ export default function Chatbot() {
       {/* Chat Button */}
       {!isOpen && (
         <motion.button
-          onClick={toggleChat}
-          className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FaComments size={50} />
-        </motion.button>
+        onClick={toggleChat}
+        className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110 text-5xl"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <FaComments />
+      </motion.button>
       )}
     </div>
   )
