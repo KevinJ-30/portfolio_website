@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "ES2020",
     "lib": ["ES2020"],
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
@@ -11,7 +11,7 @@
     "strict": true,
     "skipLibCheck": true,
     "composite": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "noEmitOnError": true,
     "forceConsistentCasingInFileNames": true
   },
