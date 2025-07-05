@@ -75,7 +75,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       })
     }
 
-    const data = await response.json()
+    const data = await response.json() as any
     console.log('Gemini API response received')
     
     if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
