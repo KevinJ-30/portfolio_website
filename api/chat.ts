@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+const handler = async (req: VercelRequest, res: VercelResponse) => {
   // Add CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
@@ -94,4 +94,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.error('Server error:', error)
     res.status(500).json({ error: 'Internal server error' })
   }
-} 
+}
+
+module.exports = handler 

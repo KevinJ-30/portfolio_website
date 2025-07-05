@@ -12,7 +12,8 @@
     "skipLibCheck": true,
     "composite": true,
     "isolatedModules": false,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["api"]
 }
