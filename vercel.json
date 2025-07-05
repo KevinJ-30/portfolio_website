@@ -1,5 +1,10 @@
 {
   "version": 2,
+  "functions": {
+    "api/chat.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/(.*\\.(js|css|svg|png|jpg|jpeg|gif|ico|pdf|txt|woff2?))", "dest": "/$1" },

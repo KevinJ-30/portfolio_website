@@ -10,7 +10,9 @@
     "rootDir": ".",
     "strict": true,
     "skipLibCheck": true,
-    "composite": true
+    "composite": true,
+    "isolatedModules": false,
+    "noEmitOnError": true
   },
   "include": ["api"]
 }
