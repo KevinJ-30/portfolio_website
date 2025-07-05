@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+const handler = async (req: VercelRequest, res: VercelResponse) => {
   // Add CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
@@ -75,7 +75,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       })
     }
 
-    const data = await response.json()
+    const data = await response.json() as any
     console.log('Gemini API response received')
     
     if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
@@ -95,3 +95,5 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.status(500).json({ error: 'Internal server error' })
   }
 } 
+
+module.exports = handler;

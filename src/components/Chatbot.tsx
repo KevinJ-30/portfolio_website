@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaComments, FaTimes, FaPaperPlane } from 'react-icons/fa'
-import { sendMessage } from '../services/chatService'
+import { sendMessage } from '../services/chatService.js'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -165,7 +165,7 @@ export default function Chatbot() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          <FaComments size={32} />
+          <FaComments size={50} />
         </motion.button>
       )}
     </div>
