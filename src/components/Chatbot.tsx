@@ -91,7 +91,7 @@ export default function Chatbot() {
             <div className="flex-1 overflow-y-auto p-4 space-y-3">
               {messages.length === 0 && (
                 <div className="text-center text-gray-500 text-sm py-8">
-                  👋 Hi! I'm here to help. Ask me anything about my work, skills, or projects!
+                  Hi! I'm here to help. Ask me anything about my work, skills, or projects!
                 </div>
               )}
               <AnimatePresence>
