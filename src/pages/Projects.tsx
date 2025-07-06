@@ -5,7 +5,7 @@ import projectImage from '../assets/KevinJacob_Headshot.jpg'
 import medmapImage from '../assets/medmap.png'
 import gestureImage from '../assets/gesture.png'
 import refreshableImage from '../assets/refreshable.png'
-import portfolioImage from '../assets/portfolio.png'
+
 
 export default function Projects() {
   const featuredProjects = [
