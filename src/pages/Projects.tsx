@@ -2,34 +2,45 @@ import { motion } from 'framer-motion'
 import { FaCode, FaStar, FaUsers } from 'react-icons/fa'
 import ProjectCard from '../components/ProjectCard'
 import projectImage from '../assets/KevinJacob_Headshot.jpg'
+import medmapImage from '../assets/medmap.png'
+import gestureImage from '../assets/gesture.png'
+import refreshableImage from '../assets/refreshable.png'
+import portfolioImage from '../assets/portfolio.png'
 
 export default function Projects() {
   const featuredProjects = [
     {
+      title: "EMNLP Research Project",
+      description: "Developed NRA-Embed, a noise-robust annotator embedding method combining annotator-aware representations with robust contrastive loss, boosting performance on NLP classification tasks by up to 12% F1 over prior SOTA. Led EMNLP '25 submission on separating annotator disagreement from annotation noise in subjective classification. Deployed scalable ML pipelines on multi-GPU clusters.",
+      image: projectImage,
+      technologies: ["PyTorch", "NLP", "RoBERTa", "Research", "NVIDIA GPUs"],
+      githubUrl: "https://github.com/KevinJ-30/Subjective_Annotators",
+      featured: true
+    },
+    {
       title: "MedMap.ai - AI ATL",
       description: "Designed 6-agent LLM CrewAI system to analyze patient history/symptoms, routing cases to 3 specialties in <10s. Developed Streamlit & MongoDB Atlas app for real-time symptom input and specialist routing with 95% accuracy. Created RAG-enabled agents for medical diagnosis and bias detection, reducing demographic disparities in care.",
-      image: projectImage,
+      image: medmapImage,
       technologies: ["CrewAI", "Streamlit", "MongoDB", "GCP", "Python", "RAG"],
       githubUrl: "https://github.com/StevenZh23/AIATL_Project",
-      liveUrl: "#",
+      demoUrl: "https://devpost.com/software/medhub-ai",
       featured: true
     },
     {
       title: "Gesture Driven LLM - HackGT",
       description: "Engineered Flask app to aid communication for nonverbal users with Python, HTML, CSS, JavaScript, and Firebase. Built MediaPipe-Gemini pipeline, translating 25 hand gestures into natural language replies with 90% accuracy. Implemented RAG with LangChain for personalized responses from Firebase profile with sub-5s response time.",
-      image: projectImage,
+      image: gestureImage,
       technologies: ["Python", "JavaScript", "HTML/CSS", "Firebase", "Gemini", "MediaPipe", "LangChain"],
       githubUrl: "https://github.com/StudioMitesh/breakthesilence",
-      liveUrl: "#",
+      demoUrl: "https://devpost.com/software/break-the-silence-76okpu",
       featured: true
     },
     {
       title: "Refreshable Braille iOS App",
       description: "Built iPhone app in Swift converting text to braille using haptic feedback, reaching 85% readability in user testing. Designed 3D-printed navigation guide to assist app usage, improving readability accuracy from 50% to 85%. Enabled text input via camera (OCR) and keyboard, expanding accessibility options for visually impaired users.",
-      image: projectImage,
+      image: refreshableImage,
       technologies: ["Swift", "OCR", "iOS", "3D Printing"],
       githubUrl: "https://github.com/KevinJ-30/HapticBraille",
-      liveUrl: "#",
       featured: true
     },
     {
@@ -38,12 +49,11 @@ export default function Projects() {
       image: projectImage,
       technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Gemini API", "Express.js", "Vercel"],
       githubUrl: "https://github.com/KevinJ-30/portfolio_website",
-      liveUrl: "#",
+      demoUrl: "https://kevinj-dev.vercel.app/",
       featured: true
     }
+    
   ]
-
-
 
   const stats = [
     { number: "5+", label: "Projects Completed", icon: FaCode },
@@ -124,14 +134,12 @@ export default function Projects() {
                   image={project.image}
                   technologies={project.technologies}
                   githubUrl={project.githubUrl}
-                  liveUrl={project.liveUrl}
+                  demoUrl={project.demoUrl}
                 />
               </motion.div>
             ))}
           </div>
         </motion.div>
-
-
 
         {/* Call to Action */}
         <motion.div 

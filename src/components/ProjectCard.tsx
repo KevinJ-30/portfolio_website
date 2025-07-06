@@ -7,6 +7,7 @@ interface ProjectCardProps {
   technologies: string[];
   githubUrl?: string;
   liveUrl?: string;
+  demoUrl?: string;
 }
 
 export default function ProjectCard({ 
@@ -15,7 +16,8 @@ export default function ProjectCard({
   image, 
   technologies,
   githubUrl,
-  liveUrl 
+  liveUrl,
+  demoUrl
 }: ProjectCardProps) {
   return (
     <div className="glass rounded-xl overflow-hidden hover:scale-105 transition-all duration-300">
@@ -47,6 +49,17 @@ export default function ProjectCard({
 
         {/* Links */}
         <div className="flex gap-4">
+          {demoUrl && (
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
+            >
+              <FaExternalLinkAlt className="text-xl" />
+              <span className="text-sm">Demo</span>
+            </a>
+          )}
           {githubUrl && (
             <a
               href={githubUrl}
