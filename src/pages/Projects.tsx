@@ -4,7 +4,7 @@ import ProjectCard from '../components/ProjectCard'
 import projectImage from '../assets/KevinJacob_Headshot.jpg'
 import medmapImage from '../assets/medmap.png'
 import gestureImage from '../assets/break_the_silence.png'
-import refreshableImage from '../assets/braille.webp'
+import refreshableImage from '../assets/braille.png'
 
 
 export default function Projects() {
