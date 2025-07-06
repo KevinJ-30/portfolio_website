@@ -99,62 +99,6 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* Education */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <h2 className="text-3xl font-bold text-center mb-12 gradient-text">Education</h2>
-          <div className="flex justify-center">
-            <div className="max-w-md">
-            {education.map((edu, index) => (
-              <motion.div
-                key={edu.degree}
-                className="glass p-6 rounded-xl"
-                whileHover={{ scale: 1.05, y: -5 }}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-              >
-                <FaGraduationCap className="text-3xl mb-4 text-blue-400" />
-                <h3 className="text-xl font-semibold mb-2 text-white">{edu.degree}</h3>
-                <p className="text-blue-400 mb-2">{edu.school}</p>
-                <p className="text-white/70 mb-3">{edu.year}</p>
-                <p className="text-white/80 text-sm">{edu.description}</p>
-              </motion.div>
-            ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Interests */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <h2 className="text-3xl font-bold text-center mb-12 gradient-text">What Drives Me</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {interests.map((interest, index) => (
-              <motion.div
-                key={interest.title}
-                className="glass p-6 rounded-xl"
-                whileHover={{ scale: 1.02 }}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-              >
-                <interest.icon className="text-3xl mb-4 text-blue-400" />
-                <h3 className="text-xl font-semibold mb-3 text-white">{interest.title}</h3>
-                <p className="text-white/80">{interest.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* Personal Info */}
         <motion.div 
           className="mb-16"
@@ -218,6 +162,66 @@ export default function About() {
                 <p className="text-white/80 text-sm mt-2">A recent video that's caught my attention—always looking for new perspectives and ideas!</p>
               </div>
             </div>
+          </div>
+        </motion.div>
+
+        {/* Education */}
+        <motion.div 
+          className="mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <h2 className="text-3xl font-bold text-center mb-12 gradient-text flex items-center justify-center gap-3">
+            <span><FaGraduationCap className="inline-block text-4xl text-blue-400 mr-2" /></span>
+            Education
+          </h2>
+          <div className="flex flex-col items-center">
+            <div className="w-full max-w-2xl">
+              {education.map((edu, index) => (
+                <motion.div
+                  key={edu.degree}
+                  className="glass p-6 rounded-xl mb-6 border-l-4 border-blue-400 shadow-lg relative"
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                >
+                  <div className="absolute -left-6 top-6 w-4 h-4 bg-blue-400 rounded-full border-4 border-white"></div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">{edu.degree}</h3>
+                  <p className="text-blue-400 mb-2">{edu.school}</p>
+                  <p className="text-white/70 mb-3">{edu.year}</p>
+                  <p className="text-white/80 text-sm mb-2">{edu.description}</p>
+                  <p className="italic text-white/60 text-xs mt-2">“Education is not the filling of a pail, but the lighting of a fire.”</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Interests */}
+        <motion.div 
+          className="mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <h2 className="text-3xl font-bold text-center mb-12 gradient-text">What Drives Me</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {interests.map((interest, index) => (
+              <motion.div
+                key={interest.title}
+                className="glass p-6 rounded-xl"
+                whileHover={{ scale: 1.02 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+              >
+                <interest.icon className="text-3xl mb-4 text-blue-400" />
+                <h3 className="text-xl font-semibold mb-3 text-white">{interest.title}</h3>
+                <p className="text-white/80">{interest.description}</p>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
 
