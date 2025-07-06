@@ -3,8 +3,8 @@ import { FaCode, FaStar, FaUsers } from 'react-icons/fa'
 import ProjectCard from '../components/ProjectCard'
 import projectImage from '../assets/KevinJacob_Headshot.jpg'
 import medmapImage from '../assets/medmap.png'
-import gestureImage from '../assets/gesture.png'
-import refreshableImage from '../assets/refreshable.png'
+import gestureImage from '../assets/break_the_silence.png'
+import refreshableImage from '../assets/braille.webp'
 
 
 export default function Projects() {
