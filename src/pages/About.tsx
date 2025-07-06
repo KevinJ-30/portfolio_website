@@ -109,15 +109,15 @@ export default function About() {
           <h2 className="text-3xl font-bold text-center mb-12 gradient-text">Education</h2>
           <div className="flex justify-center">
             <div className="max-w-md">
-              {education.map((edu, index) => (
-                <motion.div
-                  key={edu.degree}
-                  className="glass p-6 rounded-xl"
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                >
+            {education.map((edu, index) => (
+              <motion.div
+                key={edu.degree}
+                className="glass p-6 rounded-xl"
+                whileHover={{ scale: 1.05, y: -5 }}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+              >
                 <FaGraduationCap className="text-3xl mb-4 text-blue-400" />
                 <h3 className="text-xl font-semibold mb-2 text-white">{edu.degree}</h3>
                 <p className="text-blue-400 mb-2">{edu.school}</p>
@@ -177,6 +177,47 @@ export default function About() {
                 <p className="text-white/80">{info.value}</p>
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* What's piquing my interest */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+        >
+          <div className="glass p-8 rounded-2xl">
+            <h2 className="text-3xl font-bold mb-6 gradient-text text-center">What's piquing my interest</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              {/* Books Section */}
+              <div>
+                <h3 className="text-2xl font-semibold mb-4 text-white">Books I'm Reading</h3>
+                <ul className="space-y-4">
+                  <li className="bg-white/10 rounded-lg p-4">
+                    <span className="font-bold text-white">Dante's Inferno</span>
+                    <p className="text-white/80 text-sm mt-1">A classic journey through the circles of Hell—I'm fascinated by its allegory, poetic structure, and influence on literature and art.</p>
+                  </li>
+                  {/* Add more books here as needed */}
+                </ul>
+              </div>
+              {/* Video Section */}
+              <div>
+                <h3 className="text-2xl font-semibold mb-4 text-white">Videos I'm Watching</h3>
+                <div className="aspect-video rounded-lg overflow-hidden shadow-lg bg-black">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/LCEmiRjPEtQ"
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <p className="text-white/80 text-sm mt-2">A recent video that's caught my attention—always looking for new perspectives and ideas!</p>
+              </div>
+            </div>
           </div>
         </motion.div>
 
