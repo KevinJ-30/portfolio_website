@@ -187,7 +187,6 @@ export default function About() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                 >
-                  <div className="absolute -left-6 top-6 w-4 h-4 bg-blue-400 rounded-full border-4 border-white"></div>
                   <h3 className="text-xl font-semibold mb-2 text-white">{edu.degree}</h3>
                   <p className="text-blue-400 mb-2">{edu.school}</p>
                   <p className="text-white/70 mb-3">{edu.year}</p>
