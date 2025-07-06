@@ -22,12 +22,12 @@ export default function ProjectCard({
   return (
     <div className="glass rounded-xl overflow-hidden hover:scale-105 transition-all duration-300">
       {/* Project Image */}
-      <div className="relative aspect-video overflow-hidden rounded-t-xl bg-slate-800 shadow-md border-b border-white/10 flex items-center justify-center">
+      <div className="relative aspect-video overflow-hidden rounded-t-xl bg-slate-800 shadow-md border-b border-white/10">
         <img
           src={image}
           alt={title}
-          className="max-w-full max-h-full object-contain object-center"
-          style={{ backgroundColor: '#1e293b' }}
+          className="w-full h-full object-cover object-center"
+          style={{ minHeight: '100%', minWidth: '100%' }}
         />
       </div>
 
