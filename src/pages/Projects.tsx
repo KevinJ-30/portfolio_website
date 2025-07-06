@@ -3,8 +3,9 @@ import { FaCode, FaStar, FaUsers } from 'react-icons/fa'
 import ProjectCard from '../components/ProjectCard'
 import projectImage from '../assets/KevinJacob_Headshot.jpg'
 import medmapImage from '../assets/medmap3.png'
-import gestureImage from '../assets/break_the_silence.png'
+import gestureImage from '../assets/break_silence.png'
 import refreshableImage from '../assets/braille.png'
+import researchImage from '../assets/research.png'
 
 
 export default function Projects() {
@@ -12,7 +13,7 @@ export default function Projects() {
     {
       title: "EMNLP Research Project",
       description: "Developed NRA-Embed, a noise-robust annotator embedding method combining annotator-aware representations with robust contrastive loss, boosting performance on NLP classification tasks by up to 12% F1 over prior SOTA. Led EMNLP '25 submission on separating annotator disagreement from annotation noise in subjective classification. Deployed scalable ML pipelines on multi-GPU clusters.",
-      image: projectImage,
+      image: researchImage,
       technologies: ["PyTorch", "NLP", "RoBERTa", "Research", "NVIDIA GPUs"],
       githubUrl: "https://github.com/KevinJ-30/Subjective_Annotators",
       featured: true
