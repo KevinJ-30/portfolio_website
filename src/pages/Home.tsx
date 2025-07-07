@@ -1,17 +1,9 @@
 import { motion } from 'framer-motion'
-import { FaCode, FaBrain, FaUsers, FaRocket, FaStar } from 'react-icons/fa'
+import { FaUsers, FaRocket, FaStar } from 'react-icons/fa'
 import ProfileCard from '../components/ProfileCard'
 import Chatbot from '../components/Chatbot'
 
 export default function Home() {
-  const skills = [
-    { name: 'Python', level: 90, icon: FaCode },
-    { name: 'Machine Learning', level: 90, icon: FaBrain },
-    { name: 'Leadership', level: 95, icon: FaUsers },
-    { name: 'Java', level: 80, icon: FaCode },
-    { name: 'Azure/AWS', level: 85, icon: FaCode },
-  ]
-
   const highlights = [
     {
       icon: FaRocket,
@@ -52,6 +44,14 @@ export default function Home() {
             I'm a Computer Science student passionate about creating AI solutions that make a real impact. 
             From medical diagnosis systems to accessibility technology, I build solutions that help people.
           </p>
+          <div className="mt-8">
+            <a
+              href="/projects"
+              className="inline-block px-8 py-3 bg-gradient-to-r from-gray-900 to-gray-700 text-white rounded-xl hover:from-gray-800 hover:to-gray-600 transition-all duration-300 font-semibold text-lg shadow-lg border border-white/20"
+            >
+              See my projects
+            </a>
+          </div>
         </motion.div>
 
         {/* Profile Card */}
@@ -85,40 +85,41 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Skills Section */}
-        <motion.div 
+        {/* Tech Stack Pill Bar */}
+        <motion.div
           className="mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <h2 className="text-4xl font-bold text-center mb-12 gradient-text">
-            Technical Skills
+            Tech Stack
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                className="glass p-6 rounded-xl"
-                whileHover={{ scale: 1.02 }}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-              >
-                <div className="flex items-center mb-4">
-                  <skill.icon className="text-2xl mr-3 text-blue-400" />
-                  <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
-                </div>
-                <div className="w-full bg-white/20 rounded-full h-2">
-                  <motion.div
-                    className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: 0.8 + index * 0.1 }}
-                  />
-                </div>
-                <p className="text-sm text-white/70 mt-2">{skill.level}% proficiency</p>
-              </motion.div>
+          <div className="overflow-x-auto whitespace-nowrap py-4 px-2 flex items-center gap-4 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-blue-400">
+            {/* Category labels and pills */}
+            <span className="uppercase text-xs text-blue-300 font-bold tracking-wider mr-2">Languages</span>
+            {['Python', 'Java', 'Rust', 'Swift', 'JavaScript', 'HTML', 'CSS', 'SQL'].map((lang) => (
+              <span key={lang} className="inline-block px-4 py-2 rounded-full bg-blue-900/60 text-white/90 font-medium text-sm border border-blue-400 hover:bg-blue-800/80 transition-all duration-200 mr-2">
+                {lang}
+              </span>
+            ))}
+            <span className="uppercase text-xs text-cyan-300 font-bold tracking-wider ml-4 mr-2">Frameworks</span>
+            {['React', 'Flask', 'PyTorch', 'LangChain', 'LangGraph', 'CrewAI', 'Jupyter', 'OpenCV', 'Scikit-learn', 'Pandas', 'Seaborn'].map((fw) => (
+              <span key={fw} className="inline-block px-4 py-2 rounded-full bg-cyan-900/60 text-white/90 font-medium text-sm border border-cyan-400 hover:bg-cyan-800/80 transition-all duration-200 mr-2">
+                {fw}
+              </span>
+            ))}
+            <span className="uppercase text-xs text-purple-300 font-bold tracking-wider ml-4 mr-2">Platforms</span>
+            {['Firebase', 'MongoDB', 'Azure', 'GCP', 'AWS'].map((platform) => (
+              <span key={platform} className="inline-block px-4 py-2 rounded-full bg-purple-900/60 text-white/90 font-medium text-sm border border-purple-400 hover:bg-purple-800/80 transition-all duration-200 mr-2">
+                {platform}
+              </span>
+            ))}
+            <span className="uppercase text-xs text-pink-300 font-bold tracking-wider ml-4 mr-2">Tools</span>
+            {['Git', 'Jira', 'Streamlit', 'Agile', 'MCPs'].map((tool) => (
+              <span key={tool} className="inline-block px-4 py-2 rounded-full bg-pink-900/60 text-white/90 font-medium text-sm border border-pink-400 hover:bg-pink-800/80 transition-all duration-200 mr-2">
+                {tool}
+              </span>
             ))}
           </div>
         </motion.div>
