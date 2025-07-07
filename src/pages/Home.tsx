@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { FaUsers, FaRocket, FaStar, FaPython, FaJava, FaJs, FaHtml5, FaCss3Alt, FaReact, FaDatabase, FaAws, FaGitAlt, FaCloud, FaCuttlefish } from 'react-icons/fa'
-import { SiRust, SiSwift, SiFlask, SiPytorch, SiJupyter, SiMongodb, SiGooglecloud, SiFirebase, SiTypescript, SiC, SiCplusplus, SiNumpy, SiPandas, SiSequelize, SiOpencv, SiScikitlearn } from 'react-icons/si'
+import { FaUsers, FaRocket, FaStar, FaPython, FaJava, FaJs, FaHtml5, FaCss3Alt, FaReact, FaDatabase, FaAws, FaGitAlt } from 'react-icons/fa'
+import { SiRust, SiSwift, SiFlask, SiPytorch, SiJupyter, SiMongodb, SiGooglecloud, SiFirebase, SiPandas, SiOpencv, SiScikitlearn } from 'react-icons/si'
 import ProfileCard from '../components/ProfileCard'
 import Chatbot from '../components/Chatbot'
 
