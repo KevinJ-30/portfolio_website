@@ -59,24 +59,25 @@ h2 {
 
 button {
   border-radius: 12px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(212, 175, 55, 0.45);
   padding: 0.8em 1.6em;
   font-size: 1em;
   font-weight: 600;
   font-family: inherit;
-  background: linear-gradient(135deg, #5a3fa0 0%, #7b4397 100%);
-  color: white;
+  background: linear-gradient(90deg, #232323 0%, #444 100%);
+  color: #fffbe6;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(90, 63, 160, 0.25);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.10);
 }
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(90, 63, 160, 0.35);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.18);
+  background: linear-gradient(90deg, #2d2d2d 0%, #555 100%);
 }
 button:focus,
 button:focus-visible {
-  outline: 2px solid #5a3fa0;
+  outline: 2px solid #d4af37;
   outline-offset: 2px;
 }
 
@@ -91,20 +92,20 @@ button:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #d4af37 0%, #444 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  background: linear-gradient(135deg, #bfa133 0%, #222 100%);
 }
 
 /* Glass morphism effect */
 .glass {
-  background: rgba(24, 24, 28, 0.82);
+  background: rgba(24, 24, 28, 0.88);
   backdrop-filter: blur(18px) saturate(160%);
-  border: 2px solid rgba(220, 220, 220, 0.35);
-  box-shadow: 0 8px 32px 0 rgba(220, 220, 220, 0.12), 0 1.5px 0 0 rgba(255,255,255,0.18) inset;
+  border: 2px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 8px 32px 0 rgba(212, 175, 55, 0.10), 0 1.5px 0 0 rgba(255,255,255,0.10) inset;
 }
 
 /* Floating animation */
@@ -119,7 +120,7 @@ button:focus-visible {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #e0e7ff 0%, #b39ddb 100%);
+  background: linear-gradient(90deg, #fffbe6 0%, #d4af37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

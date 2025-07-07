@@ -4,14 +4,6 @@ import ProfileCard from '../components/ProfileCard'
 import Chatbot from '../components/Chatbot'
 
 export default function Home() {
-  const skills = [
-    { name: 'Python', level: 90, icon: FaCode },
-    { name: 'Machine Learning', level: 90, icon: FaBrain },
-    { name: 'Leadership', level: 95, icon: FaUsers },
-    { name: 'Java', level: 80, icon: FaCode },
-    { name: 'Azure/AWS', level: 85, icon: FaCode },
-  ]
-
   const highlights = [
     {
       icon: FaRocket,
