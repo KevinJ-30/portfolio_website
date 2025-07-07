@@ -101,10 +101,10 @@ button:focus-visible {
 
 /* Glass morphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.13);
+  background: rgba(24, 24, 28, 0.82);
   backdrop-filter: blur(18px) saturate(160%);
-  border: 2px solid rgba(0, 200, 255, 0.45);
-  box-shadow: 0 8px 32px 0 rgba(0, 200, 255, 0.18), 0 1.5px 0 0 rgba(0, 200, 255, 0.25) inset;
+  border: 2px solid rgba(220, 220, 220, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(220, 220, 220, 0.12), 0 1.5px 0 0 rgba(255,255,255,0.18) inset;
 }
 
 /* Floating animation */

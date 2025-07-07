@@ -52,6 +52,14 @@ export default function Home() {
             I'm a Computer Science student passionate about creating AI solutions that make a real impact. 
             From medical diagnosis systems to accessibility technology, I build solutions that help people.
           </p>
+          <div className="mt-8">
+            <a
+              href="/projects"
+              className="inline-block px-8 py-3 bg-gradient-to-r from-gray-900 to-gray-700 text-white rounded-xl hover:from-gray-800 hover:to-gray-600 transition-all duration-300 font-semibold text-lg shadow-lg border border-white/20"
+            >
+              See my projects
+            </a>
+          </div>
         </motion.div>
 
         {/* Profile Card */}
@@ -85,41 +93,49 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Skills Section */}
-        <motion.div 
+        {/* Tech Stack Section */}
+        <motion.div
           className="mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <h2 className="text-4xl font-bold text-center mb-12 gradient-text">
-            Technical Skills
+            Tech Stack
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                className="glass p-6 rounded-xl"
-                whileHover={{ scale: 1.02 }}
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-              >
-                <div className="flex items-center mb-4">
-                  <skill.icon className="text-2xl mr-3 text-blue-400" />
-                  <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
-                </div>
-                <div className="w-full bg-white/20 rounded-full h-2">
-                  <motion.div
-                    className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: 0.8 + index * 0.1 }}
-                  />
-                </div>
-                <p className="text-sm text-white/70 mt-2">{skill.level}% proficiency</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="glass p-6 rounded-xl">
+              <h3 className="text-xl font-semibold mb-4 text-white">Languages</h3>
+              <ul className="flex flex-wrap gap-2">
+                {['Python', 'Java', 'C', 'Rust', 'Swift', 'JavaScript', 'SQL', 'HTML/CSS'].map(lang => (
+                  <li key={lang} className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-sm">{lang}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="glass p-6 rounded-xl">
+              <h3 className="text-xl font-semibold mb-4 text-white">Frameworks & Libraries</h3>
+              <ul className="flex flex-wrap gap-2">
+                {['React', 'Flask', 'PyTorch', 'LangChain', 'LangGraph', 'CrewAI', 'Jupyter', 'OpenCV', 'Scikit-learn', 'Pandas', 'Seaborn'].map(fw => (
+                  <li key={fw} className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-sm">{fw}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="glass p-6 rounded-xl">
+              <h3 className="text-xl font-semibold mb-4 text-white">Platforms & Cloud</h3>
+              <ul className="flex flex-wrap gap-2">
+                {['Firebase', 'MongoDB', 'Azure', 'GCP', 'AWS'].map(platform => (
+                  <li key={platform} className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-sm">{platform}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="glass p-6 rounded-xl">
+              <h3 className="text-xl font-semibold mb-4 text-white">Tools</h3>
+              <ul className="flex flex-wrap gap-2">
+                {['Git', 'Jira', 'Streamlit', 'Agile', 'MCPs'].map(tool => (
+                  <li key={tool} className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-sm">{tool}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </motion.div>
 
