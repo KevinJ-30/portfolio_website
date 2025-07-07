@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { FaUsers, FaRocket, FaStar } from 'react-icons/fa'
+import { FaUsers, FaRocket, FaStar, FaPython, FaJava, FaJs, FaHtml5, FaCss3Alt, FaReact, FaDatabase, FaAws, FaGitAlt, FaCloud, FaCuttlefish } from 'react-icons/fa'
+import { SiRust, SiSwift, SiFlask, SiPytorch, SiJupyter, SiMongodb, SiGooglecloud, SiFirebase, SiTypescript, SiC, SiCplusplus, SiNumpy, SiPandas, SiSequelize, SiOpencv, SiScikitlearn } from 'react-icons/si'
 import ProfileCard from '../components/ProfileCard'
 import Chatbot from '../components/Chatbot'
 
@@ -95,38 +96,149 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center mb-12 gradient-text">
             Tech Stack
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="glass p-6 rounded-xl">
+          <div className="space-y-10">
+            {/* Languages */}
+            <div>
               <h3 className="text-xl font-semibold mb-4 text-white">Languages</h3>
-              <ul className="flex flex-wrap gap-2">
-                {['Python', 'Java', 'C', 'Rust', 'Swift', 'JavaScript', 'SQL', 'HTML/CSS'].map(lang => (
-                  <li key={lang} className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-sm">{lang}</li>
-                ))}
-              </ul>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                <div className="flex flex-col items-center">
+                  <FaPython className="text-4xl text-blue-400" />
+                  <span className="text-white/80 text-xs mt-2">Python</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <FaJava className="text-4xl text-orange-400" />
+                  <span className="text-white/80 text-xs mt-2">Java</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiRust className="text-4xl text-orange-700" />
+                  <span className="text-white/80 text-xs mt-2">Rust</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiSwift className="text-4xl text-red-400" />
+                  <span className="text-white/80 text-xs mt-2">Swift</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <FaJs className="text-4xl text-yellow-300" />
+                  <span className="text-white/80 text-xs mt-2">JavaScript</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <FaHtml5 className="text-4xl text-orange-500" />
+                  <span className="text-white/80 text-xs mt-2">HTML5</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <FaCss3Alt className="text-4xl text-blue-300" />
+                  <span className="text-white/80 text-xs mt-2">CSS3</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <FaDatabase className="text-4xl text-green-400" />
+                  <span className="text-white/80 text-xs mt-2">SQL</span>
+                </div>
+              </div>
             </div>
-            <div className="glass p-6 rounded-xl">
+            {/* Frameworks & Libraries */}
+            <div>
               <h3 className="text-xl font-semibold mb-4 text-white">Frameworks & Libraries</h3>
-              <ul className="flex flex-wrap gap-2">
-                {['React', 'Flask', 'PyTorch', 'LangChain', 'LangGraph', 'CrewAI', 'Jupyter', 'OpenCV', 'Scikit-learn', 'Pandas', 'Seaborn'].map(fw => (
-                  <li key={fw} className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-sm">{fw}</li>
-                ))}
-              </ul>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                <div className="flex flex-col items-center">
+                  <FaReact className="text-4xl text-cyan-400" />
+                  <span className="text-white/80 text-xs mt-2">React</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiFlask className="text-4xl text-gray-400" />
+                  <span className="text-white/80 text-xs mt-2">Flask</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiPytorch className="text-4xl text-orange-400" />
+                  <span className="text-white/80 text-xs mt-2">PyTorch</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiJupyter className="text-4xl text-yellow-400" />
+                  <span className="text-white/80 text-xs mt-2">Jupyter</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiOpencv className="text-4xl text-blue-400" />
+                  <span className="text-white/80 text-xs mt-2">OpenCV</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiScikitlearn className="text-4xl text-yellow-200" />
+                  <span className="text-white/80 text-xs mt-2">Scikit-learn</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiPandas className="text-4xl text-yellow-300" />
+                  <span className="text-white/80 text-xs mt-2">Pandas</span>
+                </div>
+                {/* Add more as needed */}
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl text-white/60">LangChain</span>
+                  <span className="text-white/80 text-xs mt-2">LangChain</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl text-white/60">LangGraph</span>
+                  <span className="text-white/80 text-xs mt-2">LangGraph</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl text-white/60">CrewAI</span>
+                  <span className="text-white/80 text-xs mt-2">CrewAI</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl text-white/60">Seaborn</span>
+                  <span className="text-white/80 text-xs mt-2">Seaborn</span>
+                </div>
+              </div>
             </div>
-            <div className="glass p-6 rounded-xl">
+            {/* Platforms & Cloud */}
+            <div>
               <h3 className="text-xl font-semibold mb-4 text-white">Platforms & Cloud</h3>
-              <ul className="flex flex-wrap gap-2">
-                {['Firebase', 'MongoDB', 'Azure', 'GCP', 'AWS'].map(platform => (
-                  <li key={platform} className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-sm">{platform}</li>
-                ))}
-              </ul>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                <div className="flex flex-col items-center">
+                  <SiFirebase className="text-4xl text-yellow-400" />
+                  <span className="text-white/80 text-xs mt-2">Firebase</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiMongodb className="text-4xl text-green-400" />
+                  <span className="text-white/80 text-xs mt-2">MongoDB</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="flex flex-col items-center">
+                    <span className="text-4xl text-blue-400 font-bold">A</span>
+                    <span className="text-white/80 text-xs mt-2">Azure</span>
+                  </div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <SiGooglecloud className="text-4xl text-blue-300" />
+                  <span className="text-white/80 text-xs mt-2">GCP</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <FaAws className="text-4xl text-yellow-300" />
+                  <span className="text-white/80 text-xs mt-2">AWS</span>
+                </div>
+              </div>
             </div>
-            <div className="glass p-6 rounded-xl">
+            {/* Tools */}
+            <div>
               <h3 className="text-xl font-semibold mb-4 text-white">Tools</h3>
-              <ul className="flex flex-wrap gap-2">
-                {['Git', 'Jira', 'Streamlit', 'Agile', 'MCPs'].map(tool => (
-                  <li key={tool} className="px-3 py-1 bg-white/10 text-white/80 rounded-full text-sm">{tool}</li>
-                ))}
-              </ul>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                <div className="flex flex-col items-center">
+                  <FaGitAlt className="text-4xl text-orange-400" />
+                  <span className="text-white/80 text-xs mt-2">Git</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl text-white/60">Jira</span>
+                  <span className="text-white/80 text-xs mt-2">Jira</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl text-white/60">Streamlit</span>
+                  <span className="text-white/80 text-xs mt-2">Streamlit</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl text-white/60">Agile</span>
+                  <span className="text-white/80 text-xs mt-2">Agile</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl text-white/60">MCPs</span>
+                  <span className="text-white/80 text-xs mt-2">MCPs</span>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
