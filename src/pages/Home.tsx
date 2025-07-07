@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaCode, FaBrain, FaUsers, FaRocket, FaStar } from 'react-icons/fa'
+import { FaUsers, FaRocket, FaStar } from 'react-icons/fa'
 import ProfileCard from '../components/ProfileCard'
 import Chatbot from '../components/Chatbot'
 
