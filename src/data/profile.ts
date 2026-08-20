@@ -1,3 +1,4 @@
+import sentimentLengthImage from '../assets/sentiment-length.svg'
 import medmapImage from '../assets/medmap3.png'
 import gestureImage from '../assets/break_silence.png'
 import brailleImage from '../assets/braille.png'
@@ -39,6 +40,8 @@ export interface Project {
   demoUrl?: string
   liveUrl?: string
   image?: string
+  /** Overrides the default "Screenshot of ..." alt text, e.g. for a figure */
+  imageAlt?: string
   featured: boolean
 }
 
@@ -179,6 +182,24 @@ export const projects: Project[] = [
     ],
     technologies: ['Rust', 'React', 'MongoDB', 'AWS Lambda', 'REST', 'Agile'],
     featured: true,
+  },
+  {
+    id: 'sentiment-length',
+    title: 'Sentiment Across Text Lengths',
+    context: 'CS 4641 Machine Learning, Georgia Tech',
+    period: 'Spring 2026',
+    summary: 'A study of how sentiment classification degrades on short text, and whether models trained on one length generalize to another.',
+    bullets: [
+      'Built a balanced 42k-sample dataset from Twitter, IMDB, Yelp, and Amazon reviews, bucketed into four length bands from under 80 characters to over 800',
+      'Compared Naive Bayes, logistic regression, an RNN-LSTM, and ModernBERT across every bucket, with frozen-encoder and fine-tuned variants',
+      'Ran within-bucket against cross-bucket training to test length generalization, finding classical models plateau near 77% while ModernBERT climbs to 89% on long text',
+    ],
+    technologies: ['PyTorch', 'ModernBERT', 'Scikit-learn', 'Pandas', 'NLP'],
+    githubUrl: 'https://github.com/KevinJ-30/4641-Project',
+    image: sentimentLengthImage,
+    imageAlt:
+      'Bar chart of sentiment classification accuracy across four text length buckets. ModernBERT rises from 79% on text under 80 characters to 89% on text over 800, while logistic regression stays near 72 to 79%.',
+    featured: false,
   },
   {
     id: 'nra-embed',

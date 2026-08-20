@@ -146,7 +146,7 @@ export default function ProjectCard({ project, variant, index }: ProjectCardProp
         {project.image ? (
           <img
             src={project.image}
-            alt={`Screenshot of ${project.title}, ${project.context}`}
+            alt={project.imageAlt ?? `Screenshot of ${project.title}, ${project.context}`}
             loading="lazy"
             decoding="async"
             className="h-full w-full object-cover object-center grayscale transition duration-700
