@@ -1,173 +1,310 @@
 import { motion } from 'framer-motion'
-import { FaUsers, FaRocket, FaStar } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import Reveal, { RevealGroup } from '../components/Reveal'
+import Section from '../components/Section'
 import ProfileCard from '../components/ProfileCard'
-import Chatbot from '../components/Chatbot'
+import { drawLine, fadeIn, fadeUp, maskRise, stagger } from '../lib/motion'
+import {
+  archivedProjects,
+  education,
+  experiences,
+  facts,
+  featuredProjects,
+  profile,
+  skills,
+  stats,
+} from '../data/profile'
+
+/**
+ * Home is the index: name, current roles, numbers, profile, selected work,
+ * and the stack.
+ */
+
+/** The name set as display type, one line per mask. */
+const headline = ['Kevin', 'Jacob']
+
+/** Location, graduating, current role. Languages belong on the About page. */
+const heroMeta = facts.filter((fact) => fact.label !== 'Languages')
+
+/** `as const` gives three separate readonly tuples, so widen them to map safely. */
+const skillGroups = Object.entries(skills) as [string, readonly string[]][]
+
+/** Earliest role on record, order-independent. */
+const firstYear = experiences
+  .reduce((earliest, exp) => (exp.sortKey < earliest ? exp.sortKey : earliest), experiences[0].sortKey)
+  .slice(0, 4)
+
+const pad = (n: number) => String(n).padStart(2, '0')
 
 export default function Home() {
-  const highlights = [
-    {
-      icon: FaRocket,
-      title: "AI Innovation",
-      description: "Built AI agents for medical diagnosis and accessibility solutions"
-    },
-    {
-      icon: FaStar,
-      title: "Research Excellence",
-      description: "Working on research in subjective NLP classification and model evaluation"
-    },
-    {
-      icon: FaUsers,
-      title: "Leadership",
-      description: "Led teams of 5+ developers in creating impactful software solutions"
-    }
-  ]
-
   return (
-    <div className="min-h-screen pt-20">
-      <motion.div
-        className="max-w-6xl mx-auto px-4 py-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        {/* Hero Section */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+    <>
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section className="relative flex min-h-[88vh] flex-col justify-end pb-16 pt-28 md:pt-32">
+        {/* Column guides, the only texture in the hero */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 hidden md:block
+                     [mask-image:linear-gradient(to_bottom,transparent,black_22%,black)]"
         >
-          <h1 className="text-6xl font-bold mb-6 gradient-text">
-            Welcome to My Portfolio
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            I'm a Computer Science student passionate about creating AI solutions that make a real impact. 
-            From medical diagnosis systems to accessibility technology, I build solutions that help people.
-          </p>
-          <div className="mt-8">
-            <a
-              href="/projects"
-              className="inline-block px-8 py-3 bg-gradient-to-r from-gray-900 to-gray-700 text-white rounded-xl hover:from-gray-800 hover:to-gray-600 transition-all duration-300 font-semibold text-lg shadow-lg border border-white/20"
-            >
-              See my projects
-            </a>
+          <div className="container-x h-full">
+            <div className="grid h-full grid-cols-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="border-r border-line first:border-l" />
+              ))}
+            </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Profile Card */}
-        <ProfileCard />
-
-        {/* Highlights Section */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h2 className="text-4xl font-bold text-center mb-12 gradient-text">
-            What I Do Best
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {highlights.map((highlight, index) => (
-              <motion.div
-                key={highlight.title}
-                className="glass p-6 rounded-xl text-center"
-                whileHover={{ scale: 1.05, y: -5 }}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              >
-                <highlight.icon className="text-4xl mx-auto mb-4 text-blue-400" />
-                <h3 className="text-xl font-semibold mb-3 text-white">{highlight.title}</h3>
-                <p className="text-white/80">{highlight.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Tech Stack Pill Bar */}
         <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          className="container-x relative w-full"
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
         >
-          <h2 className="text-4xl font-bold text-center mb-12 gradient-text">
-            Tech Stack
-          </h2>
-          <div className="overflow-x-auto whitespace-nowrap py-4 px-2 flex items-center gap-4 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-blue-400">
-            {/* Category labels and pills */}
-            <span className="uppercase text-xs text-blue-300 font-bold tracking-wider mr-2">Languages</span>
-            {['Python', 'Java', 'Rust', 'Swift', 'JavaScript', 'HTML', 'CSS', 'SQL'].map((lang) => (
-              <span key={lang} className="inline-block px-4 py-2 rounded-full bg-blue-900/60 text-white/90 font-medium text-sm border border-blue-400 hover:bg-blue-800/80 transition-all duration-200 mr-2">
-                {lang}
-              </span>
-            ))}
-            <span className="uppercase text-xs text-cyan-300 font-bold tracking-wider ml-4 mr-2">Frameworks</span>
-            {['React', 'Flask', 'PyTorch', 'LangChain', 'LangGraph', 'CrewAI', 'Jupyter', 'OpenCV', 'Scikit-learn', 'Pandas', 'Seaborn'].map((fw) => (
-              <span key={fw} className="inline-block px-4 py-2 rounded-full bg-cyan-900/60 text-white/90 font-medium text-sm border border-cyan-400 hover:bg-cyan-800/80 transition-all duration-200 mr-2">
-                {fw}
-              </span>
-            ))}
-            <span className="uppercase text-xs text-purple-300 font-bold tracking-wider ml-4 mr-2">Platforms</span>
-            {['Firebase', 'MongoDB', 'Azure', 'GCP', 'AWS'].map((platform) => (
-              <span key={platform} className="inline-block px-4 py-2 rounded-full bg-purple-900/60 text-white/90 font-medium text-sm border border-purple-400 hover:bg-purple-800/80 transition-all duration-200 mr-2">
-                {platform}
-              </span>
-            ))}
-            <span className="uppercase text-xs text-pink-300 font-bold tracking-wider ml-4 mr-2">Tools</span>
-            {['Git', 'Jira', 'Streamlit', 'Agile', 'MCPs'].map((tool) => (
-              <span key={tool} className="inline-block px-4 py-2 rounded-full bg-pink-900/60 text-white/90 font-medium text-sm border border-pink-400 hover:bg-pink-800/80 transition-all duration-200 mr-2">
-                {tool}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+          <motion.p className="label-strong" variants={fadeIn}>
+            {profile.role}
+            <span className="mx-2.5 text-fg/45">/</span>
+            {education.shortSchool}
+          </motion.p>
 
-        {/* Quick Stats */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { number: "5+", label: "Projects Completed" },
-              { number: "3", label: "Papers in Progress" },
-              { number: "100%", label: "Dedication to Tech" },
-              { number: "∞", label: "Passion for AI" }
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="glass p-6 rounded-xl text-center"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+          <motion.h1 className="mt-7 text-display md:mt-9" variants={stagger}>
+            {headline.map((line, i) => (
+              <span
+                key={line}
+                className={`block overflow-hidden ${i > 0 ? '-mt-[0.32em]' : ''}`}
               >
-                <div className="text-3xl font-bold gradient-text mb-2">{stat.number}</div>
-                <div className="text-white/80">{stat.label}</div>
-              </motion.div>
+                <motion.span className="block pb-[0.14em] leading-[1.1]" variants={maskRise}>
+                  {line}
+                </motion.span>
+              </span>
             ))}
-          </div>
-        </motion.div>
+          </motion.h1>
 
-        {/* Chatbot Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <h2 className="text-4xl font-bold text-center mb-8 gradient-text">
-            Meet Kevin-Bot!
-          </h2>
-          <p className="text-center text-white/80 mb-8">
-            Click the chat icon in the bottom right corner to ask questions about Kevin's work, skills, or projects.
-          </p>
-          <Chatbot />
+          <motion.div className="mt-10 origin-left" variants={drawLine}>
+            <hr className="rule" />
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 gap-x-10 gap-y-8 pt-7 md:grid-cols-12"
+            variants={fadeUp}
+          >
+            <div className="md:col-span-6">
+              <p className="max-w-prose text-lead text-fg/70">{profile.tagline}</p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link to="/projects" className="btn">
+                  Selected work
+                  <span aria-hidden="true">→</span>
+                </Link>
+                <a
+                  href={profile.resumePdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                >
+                  Résumé
+                  <span aria-hidden="true">↓</span>
+                </a>
+              </div>
+            </div>
+
+            <dl className="grid content-start gap-3 md:col-span-4 md:col-start-9">
+              {heroMeta.map((fact) => (
+                <div key={fact.label} className="flex items-baseline gap-4">
+                  <dt className="label w-24 shrink-0">{fact.label}</dt>
+                  <dd className="font-mono text-label uppercase leading-[1.5] text-fg/85">
+                    {fact.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </motion.div>
+
+          <motion.p
+            className="mt-12 flex items-center gap-3 text-fg/65 md:mt-16"
+            variants={fadeIn}
+          >
+            <span className="label">Scroll</span>
+            <span aria-hidden="true" className="h-px w-10 bg-line" />
+            <span aria-hidden="true" className="text-sm leading-none">
+              ↓
+            </span>
+          </motion.p>
         </motion.div>
-      </motion.div>
-    </div>
+      </section>
+
+      <div className="container-x">
+        {/* ── 01 Currently ───────────────────────────────────────────────── */}
+        <Section
+          index="01"
+          label="Experience"
+          title="Where I've worked"
+          description={`Engineering internships and research positions, going back to ${firstYear}.`}
+        >
+          <RevealGroup as="div">
+            <ul className="border-t border-line">
+              {experiences.map((exp, i) => (
+                <motion.li key={exp.id} variants={fadeUp} className="border-b border-line">
+                  <Link
+                    to="/timeline"
+                    className="group grid grid-cols-[2.5rem_1fr_1.5rem] items-baseline gap-x-3 gap-y-2
+                               py-5 transition-colors duration-300 ease-editorial hover:bg-surface
+                               lg:grid-cols-12 lg:gap-x-6 lg:py-6"
+                  >
+                    <span className="label col-start-1 row-start-1 lg:col-span-1">
+                      {pad(i + 1)}
+                    </span>
+
+                    <span
+                      className="col-start-2 row-start-1 font-display text-h3 font-semibold
+                                 lg:col-span-4 lg:col-start-2"
+                    >
+                      {exp.shortOrg}
+                    </span>
+
+                    <span
+                      className="col-start-2 row-start-2 text-base leading-snug text-fg/75
+                                 lg:col-span-3 lg:col-start-6 lg:row-start-1"
+                    >
+                      {exp.role}
+                    </span>
+
+                    <span
+                      className="col-start-2 row-start-3 font-mono text-label uppercase leading-[1.5] text-fg/65
+                                 lg:col-span-3 lg:col-start-9 lg:row-start-1"
+                    >
+                      {exp.start} to {exp.end}
+                    </span>
+
+                    <span
+                      aria-hidden="true"
+                      className="col-start-3 row-start-1 justify-self-end text-fg/65 transition-transform
+                                 duration-300 ease-editorial group-hover:translate-x-1
+                                 lg:col-span-1 lg:col-start-12"
+                    >
+                      ↗
+                    </span>
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </RevealGroup>
+
+          <Reveal className="flex items-baseline justify-between gap-6 pt-6">
+            <p className="label">Full detail on each role</p>
+            <Link to="/timeline" className="link-line label-strong">
+              Experience ↗
+            </Link>
+          </Reveal>
+        </Section>
+
+        {/* ── 02 By the numbers ──────────────────────────────────────────── */}
+        <Section index="02" label="Numbers">
+          <RevealGroup as="div">
+            <dl className="grid grid-cols-2 border-l border-t border-line md:grid-cols-4">
+              {stats.map((stat) => (
+                <motion.div
+                  key={stat.label}
+                  variants={fadeUp}
+                  className="flex flex-col gap-3 border-b border-r border-line p-5 md:p-7"
+                >
+                  <dd className="order-1 font-display text-h1 font-semibold">{stat.value}</dd>
+                  <dt className="order-2 label leading-[1.6]">{stat.label}</dt>
+                </motion.div>
+              ))}
+            </dl>
+          </RevealGroup>
+        </Section>
+
+        {/* ── 03 Profile ─────────────────────────────────────────────────── */}
+        <Section index="03" label="Profile">
+          <ProfileCard />
+        </Section>
+
+        {/* ── 04 Selected work ───────────────────────────────────────────── */}
+        <Section
+          index="04"
+          label="Selected work"
+          title="Recent projects"
+          description="Two systems with real users. Older work is in the archive."
+        >
+          <RevealGroup as="div">
+            {featuredProjects.map((project, i) => (
+              <motion.article key={project.id} variants={fadeUp}>
+                <Link
+                  to="/projects"
+                  className="group grid grid-cols-1 gap-x-10 gap-y-6 border-t border-line py-10
+                             transition-colors duration-300 ease-editorial hover:border-line-strong
+                             md:grid-cols-12 md:py-14"
+                >
+                  <p className="label md:col-span-1">{pad(i + 1)}</p>
+
+                  <div className="md:col-span-5">
+                    <h3 className="text-h2">{project.title}</h3>
+                    <p className="mt-4 label leading-[1.6]">{project.context}</p>
+                    <p className="mt-2 label leading-[1.6]">{project.period}</p>
+                  </div>
+
+                  <div className="md:col-span-6">
+                    <p className="max-w-prose text-lead text-fg/75">{project.summary}</p>
+
+                    <ul className="mt-7 flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <li key={tech} className="chip">
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <p className="mt-8 inline-flex items-center gap-2 text-base text-fg/85 transition-colors duration-300 ease-editorial group-hover:text-fg">
+                      View project
+                      <span
+                        aria-hidden="true"
+                        className="inline-block transition-transform duration-300 ease-editorial group-hover:translate-x-1"
+                      >
+                        ↗
+                      </span>
+                    </p>
+                  </div>
+                </Link>
+              </motion.article>
+            ))}
+          </RevealGroup>
+
+          <Reveal className="flex items-baseline justify-between gap-6 border-t border-line pt-6">
+            <p className="label">{pad(archivedProjects.length)} more in the archive</p>
+            <Link to="/projects" className="link-line label-strong">
+              All work ↗
+            </Link>
+          </Reveal>
+        </Section>
+
+        {/* ── 05 Capabilities ────────────────────────────────────────────── */}
+        <Section index="05" label="Skills" title="Tools I work with">
+          <RevealGroup as="div">
+            <dl className="border-t border-line">
+              {skillGroups.map(([category, items]) => (
+                <motion.div
+                  key={category}
+                  variants={fadeUp}
+                  className="grid grid-cols-1 gap-x-10 gap-y-4 border-b border-line py-7 md:grid-cols-12 md:py-8"
+                >
+                  <dt className="label leading-[1.6] md:col-span-3">{category}</dt>
+                  <dd className="flex flex-wrap gap-2 md:col-span-9">
+                    {items.map((item) => (
+                      <span key={item} className="chip chip-interactive">
+                        {item}
+                      </span>
+                    ))}
+                  </dd>
+                </motion.div>
+              ))}
+            </dl>
+          </RevealGroup>
+        </Section>
+
+      </div>
+    </>
   )
 }
