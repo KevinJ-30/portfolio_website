@@ -1,70 +1,84 @@
-import { motion } from 'framer-motion'
-import { FaClock} from 'react-icons/fa'
-import ExperiencesComponent from "../components/Experiences"
+import PageHeader from '../components/PageHeader'
+import Section from '../components/Section'
+import ExperiencesComponent, {
+  ChronologyItem,
+  ChronologyKicker,
+  ChronologyList,
+} from '../components/Experiences'
+import { education, experiences } from '../data/profile'
+
+/** Everything in the header rail is derived from the data, never hardcoded. */
+const firstYear = Math.min(...experiences.map((experience) => Number(experience.sortKey.slice(0, 4))))
+const industryCount = experiences.filter((experience) => experience.kind === 'industry').length
+const researchCount = experiences.length - industryCount
+
+const headerMeta = [
+  { label: 'Active since', value: String(firstYear) },
+  { label: 'Roles', value: String(experiences.length) },
+  { label: 'Industry', value: String(industryCount) },
+  { label: 'Research', value: String(researchCount) },
+]
 
 export default function Timeline() {
-
-
   return (
-    <div className="min-h-screen pt-20">
-      <motion.div
-        className="max-w-6xl mx-auto px-4 py-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        {/* Header */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-6xl font-bold mb-6 gradient-text">
-            My Journey
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            A timeline of my academic and professional achievements, showcasing my growth in AI and accessibility technology.
-          </p>
-        </motion.div>
+    <div className="container-x">
+      <PageHeader
+        eyebrow="03 / Experience"
+        title="Roles and research"
+        intro={`Engineering internships and research positions since ${firstYear}, listed newest first.`}
+        aside={
+          <dl className="w-full border-t border-line">
+            {headerMeta.map((row) => (
+              <div
+                key={row.label}
+                className="flex items-baseline justify-between gap-6 border-b border-line py-3"
+              >
+                <dt className="label">{row.label}</dt>
+                <dd className="font-mono text-base text-fg/85">{row.value}</dd>
+              </div>
+            ))}
+          </dl>
+        }
+      />
 
+      <Section index="01" label="Chronology">
+        <ExperiencesComponent />
+      </Section>
 
+      <Section index="02" label="Education">
+        <ChronologyList>
+          <ChronologyItem
+            qualifier="Expected"
+            start={education.graduation}
+            location={education.location}
+            current
+          >
+            <ChronologyKicker category="Degree" flag="In progress" />
 
-        {/* Detailed Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center mb-6">
-              <FaClock className="text-3xl mr-3 text-blue-400" />
-              <h2 className="text-4xl font-bold gradient-text">Detailed Timeline</h2>
-            </div>
-            <p className="text-white/80 max-w-2xl mx-auto">
-              Explore my complete journey through education, internships, research, and achievements
-            </p>
-          </div>
-          <ExperiencesComponent />
-        </motion.div>
+            <h3 className="mt-4 text-h3">{education.degree}</h3>
+            <p className="mt-1.5 max-w-prose text-fg/75">{education.school}</p>
 
-        {/* Future Goals */}
-        <motion.div 
-          className="mt-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <div className="glass p-8 rounded-2xl text-center">
-            <h2 className="text-3xl font-bold mb-6 gradient-text">Looking Forward</h2>
-            <p className="text-xl text-white/90 leading-relaxed max-w-4xl mx-auto">
-              "My goal is to continue pushing the boundaries of AI and accessibility technology, 
-              creating solutions that make a real difference in people's lives. I'm excited to 
-              collaborate with innovative teams and contribute to the future of human-centered AI."
-            </p>
-          </div>
-        </motion.div>
-      </motion.div>
+            <dl className="mt-6 grid max-w-prose grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2">
+              <div>
+                <dt className="label">GPA</dt>
+                <dd className="mt-2 font-mono text-base text-fg/85">{education.gpa} / 4.00</dd>
+              </div>
+              <div>
+                <dt className="label">Concentrations</dt>
+                <dd className="mt-2 text-base text-fg/75">{education.concentrations.join(', ')}</dd>
+              </div>
+            </dl>
+
+            <ul className="mt-7 flex flex-wrap gap-2">
+              {education.courses.map((course) => (
+                <li key={course} className="chip">
+                  {course}
+                </li>
+              ))}
+            </ul>
+          </ChronologyItem>
+        </ChronologyList>
+      </Section>
     </div>
   )
 }

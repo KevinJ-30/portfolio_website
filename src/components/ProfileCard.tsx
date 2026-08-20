@@ -1,101 +1,108 @@
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa'
-import profileImage from '../assets/KevinJacob_Headshot.jpg'
+import Reveal, { RevealGroup } from './Reveal'
+import { fadeUp } from '../lib/motion'
+import { education, profile } from '../data/profile'
+import headshot from '../assets/KevinJacob_Headshot.jpg'
+
+/**
+ * The "who I am" strip on the home page, a bordered portrait against a
+ * column of bio, education, and contact rows. Not a floating card.
+ */
+
+/** Last path segment of a profile URL, e.g. "KevinJ-30" */
+const handle = (url: string) => url.replace(/\/+$/, '').split('/').pop() ?? url
+
+const contactLinks = [
+  { label: 'GitHub', value: handle(profile.github), href: profile.github, external: true },
+  { label: 'LinkedIn', value: handle(profile.linkedin), href: profile.linkedin, external: true },
+  { label: 'Email', value: profile.email, href: `mailto:${profile.email}`, external: false },
+]
+
+const educationRows = [
+  { label: 'Education', value: `${education.degree}, ${education.school}` },
+  { label: 'Focus', value: education.concentrations.join(' / ') },
+  { label: 'Graduating', value: `${education.graduation} · GPA ${education.gpa}` },
+]
 
 export default function ProfileCard() {
-  const socialLinks = [
-    { icon: FaGithub, url: 'https://github.com/KevinJ-30', label: 'GitHub' },
-    { icon: FaLinkedin, url: 'https://linkedin.com/in/kevin-jacob1', label: 'LinkedIn' },
-    { icon: FaEnvelope, url: 'mailto:kevinmatjacob@gmail.com', label: 'Email' },
-  ]
-
   return (
-    <motion.div 
-      className="max-w-4xl mx-auto px-4 mb-8"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <div className="glass p-8 rounded-2xl shadow-2xl text-center">
-        <motion.div
-          className="relative mb-6"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-        >
-          <img
-            src={profileImage}
-            alt="Kevin Jacob"
-            className="w-40 h-40 mx-auto rounded-full object-cover border-4 border-white/20 shadow-xl"
-          />
+    <div className="grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-12">
+      <Reveal className="md:col-span-4">
+        <figure className="group m-0">
+          <div className="overflow-hidden border border-line bg-surface">
+            <img
+              src={headshot}
+              alt={`Portrait of ${profile.name}`}
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover object-center grayscale
+                         transition duration-700 ease-editorial group-hover:grayscale-0"
+            />
+          </div>
+          <figcaption className="mt-3 flex items-baseline justify-between gap-4">
+            <span className="label">{profile.location}</span>
+            <span className="label">{education.shortSchool}</span>
+          </figcaption>
+        </figure>
+      </Reveal>
+
+      <RevealGroup as="div" className="md:col-span-7 md:col-start-6">
+        <motion.div variants={fadeUp}>
+          <h2 className="text-h2">{profile.name}</h2>
+          <p className="mt-4 label-strong">{profile.role}</p>
+          <p className="mt-6 max-w-prose text-lead text-fg/75">{profile.bio}</p>
         </motion.div>
-        
-        <motion.h2 
-          className="text-3xl font-bold mb-2 gradient-text"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          Kevin Jacob
-        </motion.h2>
-        
-        <motion.p 
-          className="text-xl text-white/90 mb-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          Computer Science Student | Human-Centered AI Enthusiast
-        </motion.p>
-        
-        <motion.p 
-          className="text-white/80 mb-6 max-w-2xl mx-auto leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          Passionate about creating AI solutions that make a real impact on people's lives. 
-          Specializing in multi-agent systems, natural language processing, and accessibility technology.
-        </motion.p>
-        
-        <motion.div 
-          className="flex justify-center space-x-4 mb-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          {socialLinks.map((social, index) => (
-            <motion.a
-              key={social.label}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110"
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 + index * 0.1 }}
+
+        <motion.dl variants={fadeUp} className="mt-10 border-t border-line">
+          {educationRows.map((row) => (
+            <div
+              key={row.label}
+              className="flex flex-col gap-1 border-b border-line py-4
+                         sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
             >
-              <social.icon className="text-xl" />
-            </motion.a>
+              <dt className="label shrink-0">{row.label}</dt>
+              <dd className="text-base text-fg/85 sm:text-right">{row.value}</dd>
+            </div>
           ))}
+        </motion.dl>
+
+        <motion.ul variants={fadeUp} className="mt-10 border-t border-line">
+          {contactLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel="noopener noreferrer"
+                className="group flex items-baseline justify-between gap-6 border-b border-line py-4"
+              >
+                <span className="label transition-colors duration-300 ease-editorial group-hover:text-fg/80">
+                  {link.label}
+                </span>
+                <span className="flex items-center gap-2 text-base text-fg/85 transition-colors duration-300 ease-editorial group-hover:text-fg">
+                  <span className="break-all">{link.value}</span>
+                  <span
+                    aria-hidden="true"
+                    className="inline-block transition-transform duration-300 ease-editorial group-hover:translate-x-1"
+                  >
+                    ↗
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </motion.ul>
+
+        <motion.div variants={fadeUp} className="mt-10">
+          <a
+            href={profile.resumePdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost"
+          >
+            Résumé
+            <span aria-hidden="true">↓</span>
+          </a>
         </motion.div>
-        
-        <motion.a
-          href="/Kevin_Jacob_Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex justify-center items-center space-x-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 mx-auto"
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-        >
-          <FaDownload />
-          <span>Download Resume</span>
-        </motion.a>
-      </div>
-    </motion.div>
+      </RevealGroup>
+    </div>
   )
 }

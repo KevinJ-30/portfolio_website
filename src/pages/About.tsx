@@ -1,246 +1,206 @@
 import { motion } from 'framer-motion'
-import { FaGraduationCap, FaHeart, FaLightbulb, FaGlobe, FaCode, FaUsers } from 'react-icons/fa'
+import PageHeader from '../components/PageHeader'
+import Section from '../components/Section'
+import Reveal, { RevealGroup } from '../components/Reveal'
+import { fadeUp } from '../lib/motion'
+import { education, experiences, facts, interests } from '../data/profile'
+
+/** Personal prose lives here. Everything factual comes from `data/profile`. */
+const reading = [
+  {
+    title: "Dante's Inferno",
+    meta: 'Dante Alighieri · 14th century',
+    note: 'Nine circles, terza rima, and a punishment scheme that stays internally consistent the whole way down. I picked it up for the allegory and stayed for how tightly the structure holds together.',
+  },
+]
+
+const watching = {
+  src: 'https://www.youtube.com/embed/LCEmiRjPEtQ',
+  title: 'Currently watching',
+  note: 'What I have had on this week.',
+}
 
 export default function About() {
-  const education = [
-    {
-      degree: "Bachelor of Science in Computer Science",
-      school: "Georgia Institute of Technology",
-      year: "2024 - 2027",
-      description: "Focusing on Artificial Intelligence, Machine Learning, and Human-Computer Interaction"
-    }
-  ]
-
-  const interests = [
-    {
-      icon: FaCode,
-      title: "AI & Machine Learning",
-      description: "Passionate about creating intelligent systems that solve real-world problems"
-    },
-    {
-      icon: FaUsers,
-      title: "Human-Centered Design",
-      description: "Believing that technology should serve people, not the other way around"
-    },
-    {
-      icon: FaGlobe,
-      title: "Accessibility Technology",
-      description: "Creating solutions that make technology accessible to everyone"
-    },
-    {
-      icon: FaLightbulb,
-      title: "Model Context Protocols",
-      description: "Currently exploring MCPs and pushing the boundaries of what's possible"
-    }
-  ]
-
-  const personalInfo = [
-    { label: "Location", value: "Atlanta, GA" },
-    { label: "Languages", value: "English, Spanish, Malayalam" },
-    { label: "Interests", value: "AI Research, Accessibility, Open Source" },
-    { label: "Hobbies", value: "Hiking, Reading, Cello" }
-  ]
+  const current = experiences.filter((experience) => experience.current)
 
   return (
-    <div className="min-h-screen pt-20">
-      <motion.div
-        className="max-w-6xl mx-auto px-4 py-8"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+    <div className="container-x">
+      <PageHeader
+        eyebrow="04 / About"
+        title="Background"
+        intro="I do graph privacy research at Georgia Tech and subjective NLP research at Georgia State. Most recently I built ML tooling at Apple."
+        aside={
+          <div className="w-full md:min-w-[15rem]">
+            <p className="label">Currently</p>
+            <ul className="mt-5 space-y-3">
+              {current.map((experience) => (
+                <li key={experience.id} className="border-t border-line pt-3">
+                  <p className="text-base text-fg/85">{experience.shortOrg}</p>
+                  <p className="label mt-2">{experience.kind}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        }
+      />
+
+      {/* 01 Narrative */}
+      <Section index="01" label="Bio">
+        <div className="grid grid-cols-1 gap-x-10 md:grid-cols-12">
+          <RevealGroup as="article" className="md:col-span-9 md:col-start-4">
+            <motion.p variants={fadeUp} className="max-w-prose text-lead leading-[1.6] text-fg/85">
+              I started doing research in high school, building an iPhone app that converted text to
+              braille using haptic feedback. Getting it to work was one problem. Finding out whether
+              it was actually readable by the people it was meant for was a much harder one, and that
+              is the part that got me interested in research.
+            </motion.p>
+
+            <motion.p variants={fadeUp} className="mt-7 max-w-prose leading-[1.85] text-fg/75">
+              These days I do that in two places. At Georgia Tech&rsquo;s Graph Computation and
+              Machine Learning Lab, I work on differential privacy for graph neural networks, trying
+              to keep the privacy guarantees meaningful on graphs with millions of nodes and hundreds
+              of millions of edges. At Georgia State&rsquo;s Assistive Intelligence Lab, I work on
+              subjective NLP: modeling individual annotators rather than collapsing them into a
+              majority label, and figuring out when people genuinely disagree versus when a label is
+              just wrong.
+            </motion.p>
+
+            <motion.p variants={fadeUp} className="mt-7 max-w-prose leading-[1.85] text-fg/75">
+              The rest of my time goes to engineering work. I spent this past summer as a software
+              engineering intern at Apple, building ML pipelines and internal tooling: clustering
+              support requests into issue categories, stripping PII before anything gets embedded,
+              and getting metrics in front of the people who need them. Before that I was at Vantaca
+              and HOAi, building LangGraph agents and hosted MCP servers.
+            </motion.p>
+
+            <motion.p variants={fadeUp} className="mt-7 max-w-prose leading-[1.85] text-fg/75">
+              The two sides feed each other more than I expected. Research makes me careful about
+              what I claim, and shipping makes me care whether anyone can use the result.
+            </motion.p>
+          </RevealGroup>
+        </div>
+      </Section>
+
+      {/* 02 Quick facts */}
+      <Section index="02" label="Quick facts">
+        <RevealGroup className="border-t border-line">
+          {facts.map((fact) => (
+            <motion.div
+              key={fact.label}
+              variants={fadeUp}
+              className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-1 border-b border-line py-5 md:py-6"
+            >
+              <span className="label">{fact.label}</span>
+              <span className="ml-auto text-right font-display text-lead text-fg">{fact.value}</span>
+            </motion.div>
+          ))}
+        </RevealGroup>
+      </Section>
+
+      {/* 03 Education */}
+      <Section index="03" label="Education" title={education.school}>
+        <div className="grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-12">
+          <Reveal className="md:col-span-4">
+            <h3 className="text-h3">{education.degree}</h3>
+            <p className="label mt-4">{education.location}</p>
+          </Reveal>
+
+          <Reveal delay={0.06} className="md:col-span-8">
+            <dl className="border-t border-line">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-1 border-b border-line py-4">
+                <dt className="label">Graduating</dt>
+                <dd className="ml-auto text-right font-display text-fg">{education.graduation}</dd>
+              </div>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-1 border-b border-line py-4">
+                <dt className="label">GPA</dt>
+                <dd className="ml-auto text-right font-display text-fg">{education.gpa}</dd>
+              </div>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-1 border-b border-line py-4">
+                <dt className="label">Concentrations</dt>
+                <dd className="ml-auto text-right font-display text-fg">
+                  {education.concentrations.join(' · ')}
+                </dd>
+              </div>
+            </dl>
+
+            <p className="label mt-10">Selected coursework</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {education.courses.map((course) => (
+                <li key={course} className="chip chip-interactive">
+                  {course}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </Section>
+
+      {/* 04 Interests */}
+      <Section
+        index="04"
+        label="Interests"
+        title="What I work on"
+        description="Four areas I keep coming back to, across research and engineering."
       >
-        {/* Hero Section */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-6xl font-bold mb-6 gradient-text">
-            About Me
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            I'm a Computer Science student with a passion for creating AI solutions that make a real impact on people's lives.
-          </p>
-        </motion.div>
+        <RevealGroup className="border-t border-line">
+          {interests.map((interest, index) => (
+            <motion.div
+              key={interest.title}
+              variants={fadeUp}
+              className="grid grid-cols-1 gap-x-10 gap-y-3 border-b border-line py-8 md:grid-cols-12 md:py-10"
+            >
+              <p className="label md:col-span-2">{String(index + 1).padStart(2, '0')}</p>
+              <h3 className="text-h3 md:col-span-4">{interest.title}</h3>
+              <p className="max-w-prose text-fg/70 md:col-span-6">{interest.description}</p>
+            </motion.div>
+          ))}
+        </RevealGroup>
+      </Section>
 
-        {/* Personal Story */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="glass p-8 rounded-2xl">
-            <h2 className="text-3xl font-bold mb-6 gradient-text">My Story</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div>
-                <p className="text-white/90 leading-relaxed mb-4">
-                  My passion for research began in high school, where I first discovered the thrill of exploring new technologies 
-                  and solving complex problems. This early experience with research ignited my curiosity and set me on a path 
-                  toward creating meaningful AI solutions.
-                </p>
-                <p className="text-white/90 leading-relaxed mb-4">
-                  I believe that technology should be accessible to everyone, regardless of their abilities or background. 
-                  This belief drives my work in accessibility technology and human-centered AI design, ensuring that the 
-                  solutions I create benefit people from all walks of life.
-                </p>
-                <p className="text-white/90 leading-relaxed">
-                  When I'm not coding or researching, you'll find me exploring the outdoors, reading about emerging technologies, 
-                  or collaborating with other developers on open-source projects that make a difference.
-                </p>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="w-64 h-64 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <FaHeart className="text-6xl text-white" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Personal Info */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <h2 className="text-3xl font-bold text-center mb-12 gradient-text">Quick Facts</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {personalInfo.map((info, index) => (
-              <motion.div
-                key={info.label}
-                className="glass p-6 rounded-xl text-center"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
-              >
-                <h3 className="text-lg font-semibold mb-2 gradient-text">{info.label}</h3>
-                <p className="text-white/80">{info.value}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* What's piquing my interest */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-        >
-          <div className="glass p-8 rounded-2xl">
-            <h2 className="text-3xl font-bold mb-6 gradient-text text-center">What's piquing my interest</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              {/* Books Section */}
-              <div>
-                <h3 className="text-2xl font-semibold mb-4 text-white">Books I'm Reading</h3>
-                <ul className="space-y-4">
-                  <li className="bg-white/10 rounded-lg p-4">
-                    <span className="font-bold text-white">Dante's Inferno</span>
-                    <p className="text-white/80 text-sm mt-1">A classic journey through the circles of Hell—I'm fascinated by its allegory, poetic structure, and influence on literature and art.</p>
-                  </li>
-                  {/* Add more books here as needed */}
-                </ul>
-              </div>
-              {/* Video Section */}
-              <div>
-                <h3 className="text-2xl font-semibold mb-4 text-white">Videos I'm Watching</h3>
-                <div className="aspect-video rounded-lg overflow-hidden shadow-lg bg-black">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src="https://www.youtube.com/embed/LCEmiRjPEtQ"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-                <p className="text-white/80 text-sm mt-2">A recent video that's caught my attention—always looking for new perspectives and ideas!</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Education */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <h2 className="text-3xl font-bold text-center mb-12 gradient-text flex items-center justify-center gap-3">
-            <span><FaGraduationCap className="inline-block text-4xl text-blue-400 mr-2" /></span>
-            Education
-          </h2>
-          <div className="flex flex-col items-center">
-            <div className="w-full max-w-2xl">
-              {education.map((edu, index) => (
-                <motion.div
-                  key={edu.degree}
-                  className="glass p-6 rounded-xl mb-6 border-l-4 border-blue-400 shadow-lg relative"
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                >
-                  <h3 className="text-xl font-semibold mb-2 text-white">{edu.degree}</h3>
-                  <p className="text-blue-400 mb-2">{edu.school}</p>
-                  <p className="text-white/70 mb-3">{edu.year}</p>
-                  <p className="text-white/80 text-sm mb-2">{edu.description}</p>
-                  <p className="italic text-white/60 text-xs mt-2">“Education is not the filling of a pail, but the lighting of a fire.”</p>
-                </motion.div>
+      {/* 05 Reading and watching */}
+      <Section
+        index="05"
+        label="Currently"
+        title="Reading and watching"
+        description="Updated more often than the résumé."
+      >
+        <div className="grid grid-cols-1 gap-x-10 gap-y-16 md:grid-cols-12">
+          <Reveal className="md:col-span-5">
+            <p className="label">Reading</p>
+            <div className="mt-6 border-t border-line">
+              {reading.map((book) => (
+                <article key={book.title} className="border-b border-line py-7">
+                  <h3 className="text-h3">{book.title}</h3>
+                  <p className="label mt-3">{book.meta}</p>
+                  <p className="mt-5 max-w-prose text-fg/70">{book.note}</p>
+                </article>
               ))}
             </div>
-          </div>
-        </motion.div>
+          </Reveal>
 
-        {/* Interests */}
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <h2 className="text-3xl font-bold text-center mb-12 gradient-text">What Drives Me</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {interests.map((interest, index) => (
-              <motion.div
-                key={interest.title}
-                className="glass p-6 rounded-xl"
-                whileHover={{ scale: 1.02 }}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-              >
-                <interest.icon className="text-3xl mb-4 text-blue-400" />
-                <h3 className="text-xl font-semibold mb-3 text-white">{interest.title}</h3>
-                <p className="text-white/80">{interest.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+          <Reveal delay={0.08} className="md:col-span-7">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+              <p className="label">Watching</p>
+              <p className="label">Colour on hover ↗</p>
+            </div>
 
-        {/* Mission Statement */}
-        <motion.div 
-          className="text-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-        >
-          <div className="glass p-8 rounded-2xl">
-            <h2 className="text-3xl font-bold mb-6 gradient-text">My Mission</h2>
-            <p className="text-xl text-white/90 leading-relaxed max-w-4xl mx-auto">
-              "To create technology that not only solves problems but also makes the world more accessible, 
-              inclusive, and better for everyone. I believe that the best technology is the kind that you 
-              don't notice - it just works, and it works for everyone."
-            </p>
-          </div>
-        </motion.div>
-      </motion.div>
+            <div className="group mt-6 border border-line bg-surface p-2 transition-colors duration-500 ease-editorial hover:border-line-strong focus-within:border-line-strong md:p-3">
+              <div className="aspect-video w-full overflow-hidden bg-surface-2 grayscale transition-[filter] duration-500 ease-editorial group-hover:grayscale-0 group-focus-within:grayscale-0">
+                <iframe
+                  className="h-full w-full border-0"
+                  src={watching.src}
+                  title={watching.title}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+
+            <p className="mt-6 max-w-prose text-fg/70">{watching.note}</p>
+          </Reveal>
+        </div>
+      </Section>
     </div>
   )
 }
