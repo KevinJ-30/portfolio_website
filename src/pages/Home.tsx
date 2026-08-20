@@ -199,15 +199,16 @@ export default function Home() {
           </Reveal>
         </Section>
 
-        {/* ── 02 By the numbers ──────────────────────────────────────────── */}
+        {/* ── 02 Numbers ─────────────────────────────────────────────────── */}
         <Section index="02" label="Numbers">
           <RevealGroup as="div">
-            <dl className="grid grid-cols-2 border-l border-t border-line md:grid-cols-4">
+            <dl className="grid grid-cols-1 border-t border-line sm:grid-cols-2">
               {stats.map((stat) => (
                 <motion.div
                   key={stat.label}
                   variants={fadeUp}
-                  className="flex flex-col gap-3 border-b border-r border-line p-5 md:p-7"
+                  className="flex flex-col gap-3 border-b border-line py-7 sm:px-7 sm:first:pl-0
+                             sm:[&:not(:first-child)]:border-l"
                 >
                   <dd className="order-1 font-display text-h1 font-semibold">{stat.value}</dd>
                   <dt className="order-2 label leading-[1.6]">{stat.label}</dt>

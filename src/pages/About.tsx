@@ -28,7 +28,7 @@ export default function About() {
       <PageHeader
         eyebrow="04 / About"
         title="Background"
-        intro="I work on graph privacy research at Georgia Tech, subjective NLP research at Georgia State, and ML tooling at Apple."
+        intro="I do graph privacy research at Georgia Tech and subjective NLP research at Georgia State. Most recently I built ML tooling at Apple."
         aside={
           <div className="w-full md:min-w-[15rem]">
             <p className="label">Currently</p>
@@ -66,11 +66,11 @@ export default function About() {
             </motion.p>
 
             <motion.p variants={fadeUp} className="mt-7 max-w-prose leading-[1.85] text-fg/75">
-              The rest of my time goes to engineering work. I am a software engineering intern at
-              Apple, where I build ML pipelines and internal tooling: clustering support requests
-              into issue categories, stripping PII before anything gets embedded, and getting metrics
-              in front of the people who need them. Before that I was at Vantaca and HOAi, building
-              LangGraph agents and hosted MCP servers.
+              The rest of my time goes to engineering work. I spent this past summer as a software
+              engineering intern at Apple, building ML pipelines and internal tooling: clustering
+              support requests into issue categories, stripping PII before anything gets embedded,
+              and getting metrics in front of the people who need them. Before that I was at Vantaca
+              and HOAi, building LangGraph agents and hosted MCP servers.
             </motion.p>
 
             <motion.p variants={fadeUp} className="mt-7 max-w-prose leading-[1.85] text-fg/75">

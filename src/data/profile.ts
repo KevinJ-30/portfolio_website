@@ -46,7 +46,7 @@ export const profile = {
   name: 'Kevin Jacob',
   firstName: 'Kevin',
   role: 'Software Engineer',
-  tagline: 'I study computer science, do machine learning research, and build software. Currently a software engineering intern at Apple.',
+  tagline: 'I study computer science, do machine learning research, and build software. Previously a software engineering intern at Apple.',
   bio: 'I study computer science at Georgia Tech, concentrating in artificial intelligence and theory. My time splits between software engineering internships and machine learning research: right now that means agent tooling and data pipelines at Apple, differential privacy for graph neural networks at Georgia Tech, and annotator modeling for subjective NLP at Georgia State.',
   location: 'Atlanta, GA',
   email: 'kjacob7@gatech.edu',
@@ -85,7 +85,7 @@ export const experiences: Experience[] = [
     end: 'Aug 2026',
     sortKey: '2026-05',
     location: 'Cupertino, CA',
-    current: true,
+    current: false,
     kind: 'industry',
     bullets: [
       'Automated metrics for CI tooling support by building a Slack bot module in Python (Bolt) that ingests requests and pushes data via S3 to Snowflake, eliminating manual metric collection and saving 150+ engineering hours annually',
@@ -262,8 +262,6 @@ export const honors = [
 /** Headline numbers used on the home page. Each maps to a resume line. */
 export const stats = [
   { value: '4', label: 'Engineering and research roles' },
-  { value: '2.4M', label: 'Nodes in largest graph trained' },
-  { value: '12%', label: 'F1 improvement over prior SOTA' },
   { value: '500+', label: 'People using what I built' },
 ]
 
@@ -290,5 +288,5 @@ export const facts = [
   { label: 'Location', value: 'Atlanta, GA' },
   { label: 'Languages', value: 'English, Malayalam, Spanish' },
   { label: 'Graduating', value: education.graduation },
-  { label: 'Currently', value: 'SWE Intern @ Apple' },
+  { label: 'Currently', value: 'ML Research @ Georgia Tech' },
 ]
