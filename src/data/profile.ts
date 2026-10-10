@@ -6,7 +6,7 @@ import researchImage from '../assets/research.png'
 
 /**
  * Single source of truth for every page on the site.
- * Mirrors Kevin_Jacob_Resume_Summer27.pdf, update here, not in components.
+ * Mirrors Kevin_Jacob_Resume_Summer_2027.pdf, update here, not in components.
  */
 
 export interface Experience {
@@ -50,7 +50,7 @@ export const profile = {
   firstName: 'Kevin',
   role: 'Software Engineer',
   tagline: 'I study computer science, do machine learning research, and build software. Previously a software engineering intern at Apple.',
-  bio: 'I study computer science at Georgia Tech, concentrating in artificial intelligence and theory. My time splits between software engineering internships and machine learning research: right now that means agent tooling and data pipelines at Apple, differential privacy for graph neural networks at Georgia Tech, and annotator modeling for subjective NLP at Georgia State.',
+  bio: 'I study computer science at Georgia Tech, concentrating in artificial intelligence and theory. My time splits between software engineering internships and machine learning research: most recently CI tooling and data pipelines at Apple, and right now differential privacy for graph neural networks at Georgia Tech, and annotator modeling for subjective NLP at Georgia State.',
   location: 'Atlanta, GA',
   email: 'kjacob7@gatech.edu',
   altEmail: 'kevinmatjacob@gmail.com',
@@ -70,11 +70,11 @@ export const education = {
   gpa: '3.95',
   concentrations: ['Artificial Intelligence', 'Theory'],
   courses: [
-    'Efficient Machine Learning',
+    'Efficient ML (FSDP, Quantization)',
+    'Machine Learning',
     'Intro to AI',
-    'Computer Organization',
-    'Data Structures and Algorithms',
-    'Object-Oriented Programming',
+    'Graph Theory',
+    'Automata & Complexity',
   ],
 } as const
 
@@ -91,12 +91,11 @@ export const experiences: Experience[] = [
     current: false,
     kind: 'industry',
     bullets: [
-      'Automated metrics for CI tooling support by building a Slack bot module in Python (Bolt) that ingests requests and pushes data via S3 to Snowflake, eliminating manual metric collection and saving 150+ engineering hours annually',
-      'Modeled 30+ operational metrics with dbt SQL transformations on Snowflake, surfacing trends via Streamlit UI',
-      'Built an ML pipeline that strips PII from support requests, clusters them with HDBSCAN, and applies LLM-generated labels via cluster sampling, surfacing 60+ issue categories to guide tooling and documentation priorities',
-      'Built an MCP-enabled Claude skill to generate reports from Snowflake, enabling on-demand metric summaries',
+      'Engineered a Python Slack bot module (Bolt) that ingests CI tooling support requests and pushes data via S3 to Snowflake, automating metric collection and saving 150+ engineering hours annually',
+      'Modeled 30+ operational metrics with dbt SQL transformations on Snowflake, surfacing trends in a Streamlit UI used for CI triage and reviewed quarterly with partner tool teams',
+      'Developed an ML pipeline that strips PII from support requests, clusters via HDBSCAN, and applies LLM-generated labels to each cluster, surfacing 60+ issue categories to guide tooling and documentation priorities',
     ],
-    skills: ['Python', 'Slack Bolt', 'Snowflake', 'dbt', 'S3', 'Streamlit', 'HDBSCAN', 'MCP'],
+    skills: ['Python', 'Slack Bolt', 'Snowflake', 'dbt', 'S3', 'Streamlit', 'HDBSCAN', 'LLMs'],
   },
   {
     id: 'gcml',
@@ -110,9 +109,8 @@ export const experiences: Experience[] = [
     current: true,
     kind: 'research',
     bullets: [
-      'Developing a framework to improve privacy guarantees in graph neural networks under complex sampling settings, extending prior single-step methods to multi-step scenarios; co-first author on in-progress paper',
-      'Designed a graph partitioning approach that reduces sensitivity to node degree, enabling stronger node-level privacy',
-      'Built a scalable PyTorch Geometric pipeline with H200 GPUs and SLURM jobs, training on large-scale graphs (2.4M nodes, 124M edges) while maintaining ~95% accuracy retention under various differential privacy constraints',
+      'Co-authored SparseExpansion (under review, AISTATS 2027), a differentially private subgraph sampler that randomly drops subgraph edges to amplify node-level privacy, cutting ε from ~10³ to ≤10 for multi-hop GNNs',
+      'Ran experiments in PyTorch Geometric and Opacus on H200 GPUs via SLURM, benchmarking against 4 private baselines on 7 graphs (up to 2.4M nodes, 124M edges); retains ~95% of non-private accuracy at ε = 8',
     ],
     skills: ['PyTorch Geometric', 'Differential Privacy', 'Opacus', 'GNNs', 'SLURM', 'H200 GPUs'],
   },
@@ -146,9 +144,8 @@ export const experiences: Experience[] = [
     current: true,
     kind: 'research',
     bullets: [
-      'Developed NRA-Embed, a noise-robust annotator embedding method combining annotator-aware representations with robust contrastive loss, boosting performance on NLP classification tasks by up to 12% F1 over SOTA on 3 datasets',
-      "Led ACL '26 submission on separating annotator disagreement from annotation noise in subjective classification",
-      'Deployed PyTorch ML pipelines on a Linux-based on-premise cluster (1 to 12 GPUs), reducing training time by 80%',
+      'Proposed NRA-Embed, combining a noise-robust contrastive objective with annotator embeddings to separate genuine disagreement from label noise; matches SOTA on clean data and beats baselines by up to 20 F1 at 40% noise',
+      'Implemented a benchmarking harness in PyTorch running 500+ RoBERTa fine-tuning jobs across 4 datasets, 2 synthetic noise models, and 5 seeds on a Linux-based on-premise cluster (1 to 12 GPUs); cut training time by 80%',
     ],
     skills: ['PyTorch', 'NLP', 'Contrastive Learning', 'RoBERTa', 'GPU Clusters'],
   },
@@ -158,16 +155,14 @@ export const projects: Project[] = [
   {
     id: 'chatgt',
     title: 'ChatGT',
-    context: 'GT / NVIDIA AI Makerspace Nexus',
-    period: 'Aug 2025 - Dec 2025',
-    summary: 'A local LLM study aid running on campus GPU clusters, with Canvas LMS tooling and side-by-side model comparison.',
+    context: 'Team Lead · GT / NVIDIA AI Makerspace',
+    period: 'Aug 2025 - Present',
+    summary: 'A fully local LLM study assistant that generates adaptive quizzes and retrieves the right lecture slide with dense embeddings.',
     bullets: [
-      'Built fully local LLM study aid with React, TypeScript, and Node.js, using real-time responses via Server-Sent Events',
-      'Developed model comparison interface for A/B testing with user preference tracking across 3 models stored in SQLite',
-      'Built 7+ Canvas LMS tools for natural language queries on coursework, with JWT authentication for user profiles',
-      'Deployed on AI Makerspace GPU clusters, implementing port conflict detection (lsof, netstat) utilizing fallback ports',
+      'Shipped a fully local LLM study assistant that generates adaptive quizzes via JSON-schema structured outputs',
+      'Upgraded RAG retrieval to dense embeddings in sqlite-vec, lifting top-1 slide accuracy from 45% to 66% over keyword search',
     ],
-    technologies: ['React', 'TypeScript', 'Node.js', 'Ollama', 'SQLite', 'SSE', 'JWT'],
+    technologies: ['TypeScript', 'React', 'Ollama', 'sqlite-vec', 'RAG'],
     featured: true,
   },
   {
@@ -178,7 +173,7 @@ export const projects: Project[] = [
     summary: 'A Rust and React event platform serving 300+ members, built by a 9-engineer team I led through Agile sprints.',
     bullets: [
       'Built event tracking app in Rust & React with MongoDB and REST APIs on AWS Lambda, serving 300+ active users',
-      'Led a 9-engineer team through Agile sprints as project manager, shipping real-time check-ins, feedback, and interview scheduling features that cut manual tracking time by 70%',
+      'Led a 9-engineer team through Agile sprints as project manager, shipping real-time check-in and scheduling features',
     ],
     technologies: ['Rust', 'React', 'MongoDB', 'AWS Lambda', 'REST', 'Agile'],
     featured: true,
@@ -204,12 +199,12 @@ export const projects: Project[] = [
   {
     id: 'nra-embed',
     title: 'NRA-Embed',
-    context: "Assistive Intelligence Lab, ACL '26 submission",
+    context: 'Assistive Intelligence Lab, Findings of EMNLP 2026',
     period: '2023 - Present',
     summary: 'Noise-robust annotator embeddings that separate genuine disagreement from label noise in subjective NLP tasks.',
     bullets: [
-      'Combined annotator-aware representations with a robust contrastive loss, improving F1 by up to 12% over SOTA across 3 datasets',
-      'Formalized the distinction between annotator disagreement and annotation noise in subjective classification',
+      'Combined a noise-robust contrastive objective with annotator embeddings, matching SOTA on clean data and beating baselines by up to 20 F1 at 40% label noise',
+      'Benchmarked with 500+ RoBERTa fine-tuning runs across 4 datasets, 2 synthetic noise models, and 5 seeds',
     ],
     technologies: ['PyTorch', 'NLP', 'RoBERTa', 'Contrastive Learning'],
     githubUrl: 'https://github.com/KevinJ-30/Subjective_Annotators',
@@ -270,9 +265,17 @@ export const archivedProjects = projects.filter((p) => !p.featured)
 
 export const skills = {
   Programming: ['Python', 'Java', 'C/C++', 'Rust', 'Swift', 'TypeScript', 'JavaScript', 'SQL', 'React'],
-  'ML & AI': ['PyTorch', 'PyTorch Geometric', 'LangGraph', 'OpenCV', 'Ollama', 'MCP', 'Opacus', 'Scikit-learn', 'Pandas'],
+  'ML & AI': ['PyTorch', 'PyTorch Geometric', 'Opacus', 'LangGraph', 'Ollama', 'RAG', 'MCP', 'Scikit-learn', 'Pandas', 'OpenCV'],
   'Data & Infra': ['Snowflake', 'dbt', 'AWS', 'Azure', 'GCP', 'Docker', 'SLURM', 'MongoDB', 'SQLite', 'Streamlit', 'Firebase'],
 } as const
+
+export const publications = [
+  {
+    title: 'When Disagreement Meets Noise: Noise Robust Annotator Embeddings for Subjective NLP',
+    authors: 'Jacob, K., Ghazvinian, P., Jinadu, U., Yang, N. T., & Ding, Y.',
+    venue: 'Findings of EMNLP 2026',
+  },
+]
 
 export const honors = [
   { title: 'Zell Miller Scholarship', detail: 'Full tuition' },

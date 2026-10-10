@@ -11,11 +11,12 @@ import {
   featuredProjects,
   honors,
   profile,
+  publications,
   skills,
 } from '../data/profile'
 
 /** Bumped by hand whenever the PDF is re-exported. */
-const UPDATED = 'July 2026'
+const UPDATED = 'October 2026'
 
 /** Newest first, independent of the order things sit in the data file. */
 const timeline = [...experiences].sort((a, b) => b.sortKey.localeCompare(a.sortKey))
@@ -168,7 +169,28 @@ export default function Resume() {
         </RevealGroup>
       </Section>
 
-      <Section index="03" label="Projects">
+      <Section index="03" label="Publications">
+        <ul>
+          {publications.map((pub, index) => (
+            <Reveal
+              key={pub.title}
+              as="li"
+              delay={index * 0.06}
+              className="grid grid-cols-1 gap-x-10 gap-y-4 border-t border-line py-9 last:border-b md:grid-cols-12 md:py-12"
+            >
+              <div className={RAIL}>
+                <p className="label-strong">{pub.venue}</p>
+              </div>
+              <div className={BODY}>
+                <h3 className="text-h3">{pub.title}</h3>
+                <p className="mt-3 max-w-prose text-fg/70">{pub.authors}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+      </Section>
+
+      <Section index="04" label="Projects">
         <RevealGroup>
           {featuredProjects.map((project) => (
             <motion.article key={project.id} variants={fadeUp} className={ROW}>
@@ -217,7 +239,7 @@ export default function Resume() {
         </RevealGroup>
       </Section>
 
-      <Section index="04" label="Skills">
+      <Section index="05" label="Skills">
         <dl>
           {Object.entries(skills).map(([category, items], index) => (
             <Reveal
@@ -234,7 +256,7 @@ export default function Resume() {
         </dl>
       </Section>
 
-      <Section index="05" label="Honors">
+      <Section index="06" label="Honors">
         <ul>
           {honors.map((honor, index) => (
             <Reveal
